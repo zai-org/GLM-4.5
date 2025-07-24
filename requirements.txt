@@ -1,0 +1,5 @@
+transformers>=4.54.0
+pre-commit>=4.2.0
+accelerate>=1.9.0
+# vllm>=0.9.3
+# sglang>=0.4.9
