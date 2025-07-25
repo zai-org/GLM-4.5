@@ -4,6 +4,7 @@ __pycache__/
 *.py[codz]
 *$py.class
 .DS_Store
+GLM-4.5-Space/
 
 # C extensions
 *.so
