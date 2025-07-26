@@ -1,0 +1,20 @@
+{
+  "LOG": true,
+  "Providers": [
+    {
+      "name": "glm-4.5-sglang",
+      "api_base_url": "http://127.0.0.1:8000/v1/chat/completions",
+      "api_key": "EMPTY",
+      "models": [
+        "glm-4.5"
+      ]
+    }
+  ],
+  "Router": {
+    "default": "glm-4.5-sglang,glm-4.5",
+    "background": "glm-4.5-sglang,glm-4.5",
+    "think": "glm-4.5-sglang,glm-4.5",
+    "longContext": "glm-4.5-sglang,glm-4.5",
+    "webSearch": "glm-4.5-sglang,glm-4.5"
+  }
+}
