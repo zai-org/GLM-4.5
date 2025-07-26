@@ -1,4 +1,5 @@
 from openai import OpenAI
+
 openai_api_key = "EMPTY"
 openai_api_base = "http://127.0.0.1:8000/v1"
 import json
@@ -14,15 +15,13 @@ tools = [
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "City and country e.g. Bogotá, Colombia"
+                        "description": "City and country e.g. Bogotá, Colombia",
                     }
                 },
-                "required": [
-                    "location"
-                ],
-                "additionalProperties": False
+                "required": ["location"],
+                "additionalProperties": False,
             },
-        }
+        },
     },
     {
         "type": "function",
@@ -34,46 +33,34 @@ tools = [
                 "properties": {
                     "order_id": {
                         "type": "string",
-                        "description": "The order ID, e.g. #W4794911"
+                        "description": "The order ID, e.g. #W4794911",
                     },
                     "item_ids": {
                         "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "List of item IDs to return"
+                        "items": {"type": "string"},
+                        "description": "List of item IDs to return",
                     },
                     "payment_method_id": {
                         "type": "string",
-                        "description": "Payment method ID for processing the return, e.g. paypal_7503218"
-                    }
+                        "description": "Payment method ID for processing the return, e.g. paypal_7503218",
+                    },
                 },
-                "required": [
-                    "order_id",
-                    "item_ids",
-                    "payment_method_id"
-                ],
-                "additionalProperties": False
+                "required": ["order_id", "item_ids", "payment_method_id"],
+                "additionalProperties": False,
             },
-        }
-    }
+        },
+    },
 ]
 tools_messages = [
     {
         "role": "tool",
         "tool_call_id": "tool-call-bf208d1d-9b5f-407f-8c6e-c35e54aa2fef",
-        "content": "{\"city\": \"北京\", \"date\": \"2024-06-27\", \"weather\": \"晴\", \"temperature\": \"26C\"}"
+        "content": '{"city": "北京", "date": "2024-06-27", "weather": "晴", "temperature": "26C"}',
     },
 ]
 messages = [
-    {
-        "role": "system",
-        "content": "请你调用工具，用中文回答问题。"
-    },
-    {
-        "role": "user",
-        "content": "请帮我查询一下北京的天气。"
-    }
+    {"role": "system", "content": "请你调用工具，用中文回答问题。"},
+    {"role": "user", "content": "请帮我查询一下北京的天气。"},
 ]
 
 client = OpenAI(
@@ -99,7 +86,7 @@ completion_2 = client.chat.completions.create(
     model="THUDM/GLM-4.5",
     messages=messages,
     tools=tools,
-    extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+    extra_body={"chat_template_kwargs": {"enable_thinking": False}},
 )
 print("===== RESPONSE =====")
 print(completion_2.choices[0].message.content)
