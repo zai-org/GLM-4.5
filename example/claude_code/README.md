@@ -28,7 +28,7 @@ And start the model service with the following command:
 
 ```shell
 python3 -m sglang.launch_server \
-  --model-path THUDM/GLM-4.5 \
+  --model-path zai-org/GLM-4.5 \
   --tp-size 16 \
   --tool-call-parser glm45  \
   --reasoning-parser glm45 \
@@ -62,6 +62,7 @@ Please ensure your server's IP can be accessed from the device where Claude Code
 2. Rename it to `config.json`
 3. Copy it to `~/.claude-code-router/config.json`.
 4. Execute the `ccr restart` command in the command line. You should see the following output:
+  
     ```
     Service was not running or failed to stop.
     Starting claude code router service...
@@ -77,6 +78,7 @@ ccr code
 ```
 
 It should looks like:
+
 ```
 zr@MacBook GLM-4.5 % ccr code
 Service not running, starting service...
@@ -119,7 +121,7 @@ Service not running, starting service...
   from transformers import AutoModelForCausalLM, AutoTokenizer
   import torch
 
-  MODEL_PATH = "THUDM/GLM-4.5"
+  MODEL_PATH = "zai-org/GLM-4.5"
   tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
   model = AutoModelForCausalLM.from_pretrained(
       MODEL_PATH,

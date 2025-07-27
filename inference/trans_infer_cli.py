@@ -1,7 +1,7 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-MODEL_PATH = "THUDM/GLM-4.5"
+MODEL_PATH = "zai-org/GLM-4.5"
 messages = [{"role": "user", "content": "你好"}]
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 inputs = tokenizer.apply_chat_template(
