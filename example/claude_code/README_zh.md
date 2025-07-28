@@ -63,11 +63,12 @@ python3 -m sglang.launch_server \
 2. 重命名为 `config.json`
 3. 复制到 `~/.claude-code-router/config.json` 中。
 4. 再命令行执行`ccr restart` 命令。得到如下输出
-    ```
-    Service was not running or failed to stop.
-    Starting claude code router service...
-    ✅ Service started successfully in the background.
-    ```
+  
+```
+Service was not running or failed to stop.
+Starting claude code router service...
+✅ Service started successfully in the background.
+```
 
 ## 运行
 
