@@ -2,6 +2,9 @@
 
 [English Version](./README.md)
 
+<div align="center">
+<img src=resources/logo.svg width="14%"/>
+</div>
 <p align="center">
     👋 加入我们的<a href="resources/WECHAT.md" target="_blank">微信群</a>或<a href="https://discord.gg/QR7SARHRxK" target="_blank">Discord</a>社区。
     <br>
@@ -24,7 +27,7 @@ GLM-4.5和GLM-4.5-Air都是混合推理模型，提供两种模式：用于复�
 
 ![bench](resources/bench.png)
 
-如需了解更多评估结果、展示案例和技术细节，请访问我们的[技术报告](z.ai/blog/glm-4.5)。
+如需了解更多评估结果、展示案例和技术细节，请访问我们的[技术报告](https://z.ai/blog/glm-4.5)。
 
 模型代码、工具解析器和推理解析器可在[transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、[vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)和[SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py)的实现中找到。
 

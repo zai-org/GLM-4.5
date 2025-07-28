@@ -2,6 +2,9 @@
 
 [中文阅读](./README_zh.md)
 
+<div align="center">
+<img src=resources/logo.svg width="14%"/>
+</div>
 <p align="center">
     👋 Join our <a href="resources/WECHAT.md" target="_blank">WeChat</a> or <a href="https://discord.gg/QR7SARHRxK" target="_blank">Discord</a> community.
     <br>
@@ -24,7 +27,7 @@ As demonstrated in our comprehensive evaluation across 12 industry-standard benc
 
 ![bench](resources/bench.png)
 
-For more eval results, show cases, and technical details, please visit our [technical report](z.ai/blog/glm-4.5).
+For more eval results, show cases, and technical details, please visit our [technical report](https://z.ai/blog/glm-4.5).
 
 The model code, tool parser and reasoning parser can be found in the implementation of [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe), [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py) and [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py).
 
