@@ -17,8 +17,8 @@
 
 ## 模型介绍
 
-**GLM-4.5** 系列模型是专为智能体设计的基础模型。GLM-4.5拥有 **355** 亿总参数量，其中 **32** 亿活跃参数；GLM-4.5-Air采用更紧凑的设计，拥有
- **106** 亿总参数量，其中 **12** 亿活跃参数。GLM-4.5模型统一了推理、编码和智能体能力，以满足智能体应用的复杂需求。
+**GLM-4.5** 系列模型是专为智能体设计的基础模型。GLM-4.5拥有 **3550** 亿总参数量，其中 **320** 亿活跃参数；GLM-4.5-Air 采用更紧凑的设计，拥有
+ **1060** 亿总参数量，其中 **120** 亿活跃参数。GLM-4.5模型统一了推理、编码和智能体能力，以满足智能体应用的复杂需求。
 
 GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于复杂推理和工具使用的思考模式，以及用于即时响应的非思考模式。
 
@@ -32,7 +32,7 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 如需了解更多评估结果、展示案例和技术细节，请访问我们的 [技术报告](https://z.ai/blog/glm-4.5)。
 
 模型代码、工具解析器和推理解析器可在 [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、 [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)
-和 [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py) 的实现中找到。
+和 [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py) 的找到具体实现。
 
 ## 模型下载
 
