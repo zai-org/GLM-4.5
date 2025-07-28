@@ -10,7 +10,7 @@
     <br>
     📖 Check out the GLM-4.5 <a href="https://z.ai/blog/glm-4.5" target="_blank">technical blog</a>.
     <br>
-    📍 Use GLM-4.5 API services on <a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-4.5">Zhipu AI Open Platform</a>.
+    📍 Use GLM-4.5 API services on <a href="https://docs.z.ai/guides/llm/glm-4.5">Z.ai API Platform (Global)</a> or <br> <a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-4.5">Zhipu AI Open Platform (Mainland China)</a>.
     <br>
     👉 One click to <a href="https://chat.z.ai">GLM-4.5</a>.
 </p>
