@@ -29,7 +29,7 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 
 ![bench](resources/bench.png)
 
-如需了解更多评估结果、展示案例和技术细节，请访问我们的 [技术报告](https://z.ai/blog/glm-4.5)。
+如需了解更多评估结果、展示案例和技术细节，请访问我们的 [技术博客](https://z.ai/blog/glm-4.5)。技术报告将很快发布。
 
 模型代码、工具解析器和推理解析器可在 [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、 [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)
 和 [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py) 的找到具体实现。

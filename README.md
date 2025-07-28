@@ -36,7 +36,7 @@ GLM-4.5-Air delivers competitive results at **59.8** while maintaining superior 
 ![bench](resources/bench.png)
 
 For more eval results, show cases, and technical details, please visit
-our [technical report](https://z.ai/blog/glm-4.5).
+our [technical blog](https://z.ai/blog/glm-4.5). The technical report will be released soon.
 
 The model code, tool parser and reasoning parser can be found in the implementation
 of [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe), [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)
