@@ -8,7 +8,7 @@
 <p align="center">
     👋 加入我们的<a href="resources/WECHAT.md" target="_blank"> 微信群 </a>或<a href="https://discord.gg/QR7SARHRxK" target="_blank"> Discord </a>社区。
     <br>
-    📖 查看GLM-4.5<a href="https://z.ai/blog/glm-4.5" target="_blank"> 技术博客 </a>。
+    📖 查看GLM-4.5<a href="https://z.ai/blog/glm-4.5" target="_blank"> 技术博客 </a> 以及 <a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank"> 智谱AI技术文档 </a>。
     <br>
     📍 在<a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-4.5"> 智谱AI开放平台 </a>上使用GLM-4.5 API服务。
     <br>
