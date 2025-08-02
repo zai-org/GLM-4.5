@@ -118,8 +118,8 @@ pip install -r requirements.txt
 ```shell
 vllm serve zai-org/GLM-4.5-Air \
     --tensor-parallel-size 8 \
-    --tool-call-parser glm45 \
-    --reasoning-parser glm45 \
+    --tool-call-parser glm4_moe \
+    --reasoning-parser glm4_moe \
     --enable-auto-tool-choice \
     --served-model-name glm-4.5-air
 ```
