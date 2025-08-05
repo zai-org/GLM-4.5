@@ -29,6 +29,7 @@ rocm/vllm-dev:nightly
 ```shell
   pip uninstall vllm 
   pip install --upgrade pip
+  cd GLM-4.5/example/AMD_GPU/
   pip install -r rocm-requirements.txt
   git clone https://github.com/vllm-project/vllm.git
   cd vllm 
