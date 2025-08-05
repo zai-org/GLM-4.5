@@ -74,12 +74,6 @@ based on the following conditions:
 
 ## Quick Start
 
-Please install the required packages according to `requirements.txt`.
-
-```shell
-pip install -r requirements.txt
-```
-
 ### transformers
 
 Please refer to the `trans_infer_cli.py` code in the `inference` folder.
