@@ -1,0 +1,10 @@
+transformers>=4.54.0
+pre-commit>=4.2.0
+accelerate>=1.9.0
+/opt/rocm/share/amd_smi
+numba
+scipy
+setuptools_scm
+numpy==2.0
+ray[cgraph]==2.43.0
+huggingface_hub[cli]
