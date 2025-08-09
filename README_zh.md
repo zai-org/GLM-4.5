@@ -8,7 +8,7 @@
 <p align="center">
     👋 加入我们的<a href="resources/WECHAT.md" target="_blank"> 微信群 </a>或<a href="https://discord.gg/QR7SARHRxK" target="_blank"> Discord </a>社区。
     <br>
-    📖 查看GLM-4.5<a href="https://z.ai/blog/glm-4.5" target="_blank"> 技术博客 </a> 以及 <a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank"> 智谱AI技术文档 </a>。
+    📖 查看GLM-4.5<a href="https://z.ai/blog/glm-4.5" target="_blank"> 技术博客 </a> ， <a href="resources/GLM_4_5_technical_report.pdf" target="_blank"> 技术报告 </a> 以及 <a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank"> 智谱AI技术文档 </a>。
     <br>
     📍 在<a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-4.5"> 智谱AI开放平台 </a>上使用GLM-4.5 API服务。
     <br>
@@ -29,7 +29,7 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 
 ![bench](resources/bench.png)
 
-如需了解更多评估结果、展示案例和技术细节，请访问我们的 [技术博客](https://z.ai/blog/glm-4.5)。技术报告将很快发布。
+如需了解更多评估结果、展示案例和技术细节，请访问我们的 [技术报告](resources/GLM_4_5_technical_report.pdf) 或者 [技术博客](https://z.ai/blog/glm-4.5)。
 
 模型代码、工具解析器和推理解析器可在 [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、 [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)
 和 [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py) 的找到具体实现。
