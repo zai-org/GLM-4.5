@@ -8,7 +8,7 @@
 <p align="center">
     👋 Join our <a href="resources/WECHAT.md" target="_blank">WeChat</a> or <a href="https://discord.gg/QR7SARHRxK" target="_blank">Discord</a> community.
     <br>
-    📖 Check out the GLM-4.5 <a href="https://z.ai/blog/glm-4.5" target="_blank">technical blog</a>, <a href="resources/GLM_4_5_technical_report.pdf" target="_blank">technical report</a>, and <a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank">Zhipu AI technical documentation</a>.
+    📖 Check out the GLM-4.5 <a href="https://z.ai/blog/glm-4.5" target="_blank">technical blog</a>, <a href="https://arxiv.org/abs/2508.06471" target="_blank">technical report</a>, and <a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank">Zhipu AI technical documentation</a>.
     <br>
     📍 Use GLM-4.5 API services on <a href="https://docs.z.ai/guides/llm/glm-4.5">Z.ai API Platform (Global)</a> or <br> <a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-4.5">Zhipu AI Open Platform (Mainland China)</a>.
     <br>
@@ -36,7 +36,7 @@ GLM-4.5-Air delivers competitive results at **59.8** while maintaining superior 
 ![bench](resources/bench.png)
 
 For more eval results, show cases, and technical details, please visit
-our [technical report](resources/GLM_4_5_technical_report.pdf) or [technical blog](https://z.ai/blog/glm-4.5).
+our [technical report](https://arxiv.org/abs/2508.06471) or [technical blog](https://z.ai/blog/glm-4.5).
 
 The model code, tool parser and reasoning parser can be found in the implementation
 of [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe), [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)
