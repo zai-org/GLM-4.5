@@ -79,6 +79,8 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 | GLM-4.5-Air | BF16 | H100 x 8 / H200 x 4   | sglang |
 | GLM-4.5-Air | FP8  | H100 x 4 / H200 x 2   | sglang |
 
+如果您使用 AMD 的 GPU，请查看 [AMD GPU 部署文档](example/amd_gpu/README_zh.md)。
+
 ### 微调
 
 使用 [Llama Factory](https://github.com/hiyouga/LLaMA-Factory) 框架，代码可在下表配置下运行：

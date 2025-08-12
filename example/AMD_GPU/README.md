@@ -1,8 +1,9 @@
-## AMD GPU Installation and Testing Guide 
+## AMD GPU Installation and Testing Guide
 ### Please follow the steps here to install and run GLM models on AMD MI300X GPU.
 ### Step By Step Guide
 #### Step 1
-Launch the Rocm-vllm docker: 
+Launch the Rocm-vllm docker:
+
 ```shell
 docker run -it --rm \
   --cap-add=SYS_PTRACE \
@@ -17,12 +18,16 @@ docker run -it --rm \
   --name vllm_GLM \
 rocm/vllm-dev:nightly
 ```
+
 #### Step 2
   Huggingface login
+
 ```shell
    huggingface-cli login 
 ```   
+
   Install pre-requisites:
+
 ```shell
   pip uninstall vllm 
   pip install --upgrade pip
@@ -33,7 +38,9 @@ rocm/vllm-dev:nightly
   export PYTORCH_ROCM_ARCH="gfx942"
   python3 setup.py develop
 ```
+
 ### Please wait until the compilation completed.
+
 ```shell
 -- Found Torch: /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch.so
 -- The HIP compiler identification is Clang 19.0.0
@@ -60,9 +67,11 @@ rocm/vllm-dev:nightly
 Using /usr/local/lib/python3.12/dist-packages
 Finished processing dependencies for vllm==0.10.1.dev343+g54de71d0d.rocm641
 ```
+
 #### Step 3
 Run the vllm online serving
 Sample Command
+
 ```shell
 VLLM_USE_V1=1 vllm serve zai-org/GLM-4.5 --tensor-parallel-size 8 --gpu-memory-utilization 0.95 --disable-log-requests --no-enable-prefix-caching --trust-remote-code 
 ```
