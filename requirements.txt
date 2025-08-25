@@ -1,6 +1,6 @@
-transformers>=4.54.0
+transformers>=4.55.3
 pre-commit>=4.2.0
-accelerate>=1.9.0
-sglang>=0.4.10.post1
-git+https://github.com/vllm-project/vllm.git
+accelerate>=1.10.0
+sglang>=0.5.1
+vllm>=0.10.1.1
 # using with pip install -U vllm --pre --extra-index-url https://wheels.vllm.ai/nightly to use streaming tool call support
