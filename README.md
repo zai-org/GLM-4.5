@@ -89,7 +89,7 @@ Under the configurations in the table below, the models can utilize their full 1
 | GLM-4.5-Air | BF16      | H100 x 8 / H200 x 4   | sglang         |
 | GLM-4.5-Air | FP8       | H100 x 4 / H200 x 2   | sglang         |
 
-if you are using AMD GPUs, Check [here](example/amd_gpu/README.md) for AMD GPU deployment documentation.
+if you are using AMD GPUs, Check [here](example/AMD_GPU/README.md) for AMD GPU deployment documentation.
 
 ### Fine-tuning
 
