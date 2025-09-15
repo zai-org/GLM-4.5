@@ -1,6 +1,7 @@
-transformers>=4.55.3
+transformers>=4.56.1
 pre-commit>=4.2.0
 accelerate>=1.10.0
-sglang>=0.5.1
-vllm>=0.10.1.1
-# using with pip install -U vllm --pre --extra-index-url https://wheels.vllm.ai/nightly to use streaming tool call support
+
+# sglang>=0.5.2  # using with sglang to infer
+# vllm>=0.10.2   # using with vllm to infer
+# not recommended to install sglang and vllm in the same environment
