@@ -170,6 +170,16 @@ python3 -m sglang.launch_server \
   --port 8000
 ```
 
++ PD 分离
+
+以下是使用单机多卡器实现PD分离的简单办法，其中P和D各使用4张GPU。
+
+```shell
+python -m sglang.launch_server --model-path zai-org/GLM-4.5-Air  --disaggregation-mode prefill --disaggregation-ib-device mlx5_0 --tp-size 4
+python -m sglang.launch_server --model-path zai-org/GLM-4.5-Air  --disaggregation-mode decode --port 30001 --disaggregation-ib-device mlx5_0 --tp-size 4 --base-gpu-id 4                                                                                                                                                        
+python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0.0.1:30000 --decode http://127.0.0.1:30001 --host 0.0.0.0 --port 8000
+```
+
 ### 请求参数说明
 
 + 使用`vLLM`和`SGLang`时，发送请求时默认启用思考模式。如果要禁用思考开关，需要添加

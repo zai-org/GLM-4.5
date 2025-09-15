@@ -183,6 +183,16 @@ python3 -m sglang.launch_server \
   --port 8000
 ```
 
++ PD-Disaggregation
+
+The following is a simple method to implement PD-Disaggregation using a single machine with multiple GPUs, P and D each use 4 GPUs.
+
+```shell
+python -m sglang.launch_server --model-path zai-org/GLM-4.5-Air  --disaggregation-mode prefill --disaggregation-ib-device mlx5_0 --tp-size 4
+python -m sglang.launch_server --model-path zai-org/GLM-4.5-Air  --disaggregation-mode decode --port 30001 --disaggregation-ib-device mlx5_0 --tp-size 4 --base-gpu-id 4                                                                                                                                                        
+python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0.0.1:30000 --decode http://127.0.0.1:30001 --host 0.0.0.0 --port 8000
+```
+
 ### Request Parameter Instructions
 
 + When using `vLLM` and `SGLang`, thinking mode is enabled by default when sending requests. If you want to disable the
