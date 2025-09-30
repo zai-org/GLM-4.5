@@ -206,6 +206,8 @@ python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0
 + 两者都支持工具调用。请使用OpenAI风格的工具描述格式进行调用。
 + 具体代码请参考`inference`文件夹中的`api_request.py`。
 
-### 工具集成推理
+### 验证
 
-有关工具集成推理，请参阅 [文档](resources/glm_4.6_tir_guide.md)
++ 有关工具集成推理，请参阅 [文档](resources/glm_4.6_tir_guide.md)。
+
++ 用于搜索基准测试，我们在 **thinking 模式** 下为搜索工具调用设计了一种特定格式，以支持搜索代理。详细模板请参阅 [此处](resources/trajectory_search.json)。

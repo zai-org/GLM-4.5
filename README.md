@@ -219,7 +219,7 @@ python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0
 + Both support tool calling. Please use OpenAI-style tool description format for calls.
 + For specific code, please refer to `api_request.py` in the `inference` folder.
 
-### Tool-integrated reasoning
+### Evaluation 
 
-For tool-integrated reasoning, please refer to [this doc](resources/glm_4.6_tir_guide.md)
-
++ For tool-integrated reasoning, please refer to [this doc](resources/glm_4.6_tir_guide.md).
++ For search benchmark, we design a specific format for searching toolcall in thinking mode to support search agent, please refer to [this](resources/trajectory_search.json). for the detailed template.
