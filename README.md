@@ -1,6 +1,6 @@
 # GLM-4.6 & GLM-4.5
 
-[中文阅读](./README_zh.md)
+[中文阅读](./README_zh.md) | [日本語版](./README_ja.md)
 
 <div align="center">
 <img src=resources/logo.svg width="15%"/>
