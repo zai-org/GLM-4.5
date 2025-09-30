@@ -205,3 +205,7 @@ python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0
   `extra_body={"chat_template_kwargs": {"enable_thinking": False}}`参数。
 + 两者都支持工具调用。请使用OpenAI风格的工具描述格式进行调用。
 + 具体代码请参考`inference`文件夹中的`api_request.py`。
+
+### 工具集成推理
+
+有关工具集成推理，请参阅 [文档](resources/glm_4.6_tir_guide.md)
