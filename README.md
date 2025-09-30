@@ -1,4 +1,4 @@
-# GLM-4.5
+# GLM-4.6 & GLM-4.5
 
 [中文阅读](./README_zh.md)
 
@@ -8,14 +8,30 @@
 <p align="center">
     👋 Join our <a href="resources/WECHAT.md" target="_blank">WeChat</a> or <a href="https://discord.gg/QR7SARHRxK" target="_blank">Discord</a> community.
     <br>
-    📖 Check out the GLM-4.5 <a href="https://z.ai/blog/glm-4.5" target="_blank">technical blog</a>, <a href="https://arxiv.org/abs/2508.06471" target="_blank">technical report</a>, and <a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank">Zhipu AI technical documentation</a>.
+    📖 Check out the GLM-4.6 <a href="https://z.ai/blog/glm-4.6" target="_blank">technical blog</a>, <a href="https://arxiv.org/abs/2508.06471" target="_blank">technical report(GLM-4.5)</a>, and <a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank">Zhipu AI technical documentation</a>.
     <br>
-    📍 Use GLM-4.5 API services on <a href="https://docs.z.ai/guides/llm/glm-4.5">Z.ai API Platform (Global)</a> or <br> <a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-4.5">Zhipu AI Open Platform (Mainland China)</a>.
+    📍 Use GLM-4.6 API services on <a href="https://docs.z.ai/guides/llm/glm-4.6">Z.ai API Platform</a>.
     <br>
-    👉 One click to <a href="https://chat.z.ai">GLM-4.5</a>.
+    👉 One click to <a href="https://chat.z.ai">GLM-4.6</a>.
 </p>
 
 ## Model Introduction
+
+### GLM-4.6
+
+Compared with GLM-4.5, **GLM-4.6**  brings several key improvements:
+
+* **Longer context window:** The context window has been expanded from 128K to 200K tokens, enabling the model to handle more complex agentic tasks.
+* **Superior coding performance:** The model achieves higher scores on code benchmarks and demonstrates better real-world performance in applications such as Claude Code、Cline、Roo Code and Kilo Code, including improvements in generating visually polished front-end pages.
+* **Advanced reasoning:** GLM-4.6 shows a clear improvement in reasoning performance and supports tool use during inference, leading to stronger overall capability.
+* **More capable agents:** GLM-4.6 exhibits stronger performance in tool using and search-based agents, and integrates more effectively within agent frameworks.
+* **Refined writing:** Better aligns with human preferences in style and readability, and performs more naturally in role-playing scenarios.
+
+We evaluated GLM-4.6 across eight public benchmarks covering agents, reasoning, and coding. Results show clear gains over GLM-4.5, with GLM-4.6 also holding competitive advantages over leading domestic and international models such as **DeepSeek-V3.1-Terminus** and **Claude Sonnet 4**.
+
+![bench](resources/bench_glm46.png)
+
+### GLM-4.5
 
 The **GLM-4.5** series models are foundation models designed for intelligent agents. GLM-4.5 has **355** billion total
 parameters with **32** billion active parameters, while GLM-4.5-Air adopts a more compact design with **106** billion
@@ -49,6 +65,7 @@ or [ModelScope](https://modelscope.cn/studios/ZhipuAI/GLM-4.5-Demo) or download 
 
 | Model            | Download Links                                                                                                                                | Model Size | Precision |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|
+| GLM-4.6          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6)                   | 355B-A32B  | BF16      |
 | GLM-4.5          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5)                   | 355B-A32B  | BF16      |
 | GLM-4.5-Air      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air)           | 106B-A12B  | BF16      |
 | GLM-4.5-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-FP8)           | 355B-A32B  | FP8       |
@@ -114,7 +131,9 @@ The code can run under the configurations in the table below using [Swift](https
 
 ## Quick Start
 
-Please install the required packages according to `requirements.txt`.
+**Both GLM-4.5 and GLM-4.6 use the same inference method.**
+
+First, install the required packages according to `requirements.txt`.
 
 ```shell
 pip install -r requirements.txt
@@ -137,7 +156,7 @@ vllm serve zai-org/GLM-4.5-Air \
     --served-model-name glm-4.5-air
 ```
 
-If you're using 8x H100 GPUs and encounter insufficient memory when running the GLM-4.5 model, you'll need
+If you're using 8x H100 GPUs and encounter insufficient memory when running the GLM-4.5 / GLM-4.6 model, you'll need
 `--cpu-offload-gb 16` (only applicable to vLLM).
 
 If you encounter `flash infer` issues, use `VLLM_ATTENTION_BACKEND=XFORMERS` as a temporary replacement. You can also

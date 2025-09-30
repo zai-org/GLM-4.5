@@ -1,4 +1,4 @@
-# GLM-4.5
+# GLM-4.6 & GLM-4.5
 
 [English Version](./README.md)
 
@@ -8,14 +8,30 @@
 <p align="center">
     👋 加入我们的<a href="resources/WECHAT.md" target="_blank"> 微信群 </a>或<a href="https://discord.gg/QR7SARHRxK" target="_blank"> Discord </a>社区。
     <br>
-    📖 查看GLM-4.5<a href="https://z.ai/blog/glm-4.5" target="_blank"> 技术博客 </a> ， <a href="https://arxiv.org/abs/2508.06471" target="_blank"> 技术报告 </a> 以及 <a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank"> 智谱AI技术文档 </a>。
+    📖 查看 GLM-4.6<a href="https://z.ai/blog/glm-4.6" target="_blank"> 技术博客 </a> ， <a href="https://arxiv.org/abs/2508.06471" target="_blank"> 技术报告(GLM-4.5) </a> 以及 <a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank"> 智谱AI技术文档 </a>。
     <br>
-    📍 在<a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-4.5"> 智谱AI开放平台 </a>上使用GLM-4.5 API服务。
+    📍 在<a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-4.6"> 智谱AI开放平台 </a>上使用GLM-4.6 API服务。
     <br>
-    👉 一键体验 <a href="https://chat.z.ai" >GLM-4.5 </a>。
+    👉 一键体验 <a href="https://chat.z.ai" >GLM-4.6 </a>。
 </p>
 
 ## 模型介绍
+
+### GLM-4.6
+
+与 GLM-4.5 相比，**GLM-4.6** 带来了几个关键改进：
+
+* **更长的上下文窗口：** 上下文窗口从 128K 扩展到 200K tokens，使模型能够处理更复杂的智能体任务。
+* **更强的代码性能：** 模型在代码基准测试中取得了更高的分数，并在实际应用中表现更佳，例如 Claude Code、Cline、Roo Code 和 Kilo Code，包括在生成视觉上更精美的前端页面方面的提升。
+* **更先进的推理能力：** GLM-4.6 在推理性能上有明显提升，并在推理过程中支持工具调用，从而带来更强的整体能力。
+* **更强大的智能体：** GLM-4.6 在工具使用和基于搜索的智能体方面表现更强，并能更高效地融入智能体框架。
+* **更精细的写作：** 更好地符合人类在风格和可读性上的偏好，并在角色扮演场景中表现得更加自然。
+
+我们在涵盖智能体、推理和编程的八个公共基准上对 GLM-4.6 进行了评估。结果显示，GLM-4.6 相比 GLM-4.5 有显著提升，同时在对比 **DeepSeek-V3.1-Terminus** 和 **Claude Sonnet 4** 等国内外领先模型时也展现出了竞争优势。
+
+![bench](resources/bench_glm46.png)
+
+### GLM-4.5
 
 **GLM-4.5** 系列模型是专为智能体设计的基础模型。GLM-4.5拥有 **3550** 亿总参数量，其中 **320** 亿活跃参数；GLM-4.5-Air 采用更紧凑的设计，拥有
  **1060** 亿总参数量，其中 **120** 亿活跃参数。GLM-4.5模型统一了推理、编码和智能体能力，以满足智能体应用的复杂需求。
@@ -41,6 +57,7 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 
 | 模型               | 下载链接                                                                                                                                          | 模型大小      | 精度   |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-----------|------|
+| GLM-4.6          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6)                   | 355B-A32B  | BF16      |
 | GLM-4.5          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5)                   | 355B-A32B | BF16 |
 | GLM-4.5-Air      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air)           | 106B-A12B | BF16 |
 | GLM-4.5-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-FP8)           | 355B-A32B | FP8  |
@@ -102,6 +119,8 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 | GLM-4.5-Air | H20 (96GiB) x 32  | RL   | 1           |
 
 ## 快速开始
+
+**GLM-4.5 和-4.6 使用相同的推理办法。**
 
 请根据`requirements.txt`安装所需的包。
 
