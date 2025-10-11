@@ -1,6 +1,6 @@
 # GLM-4.6 & GLM-4.5
 
-[English Version](./README.md)
+[English Version](./README.md) | [日本語版](./README_ja.md)
 
 <div align="center">
 <img src=resources/logo.svg width="15%"/>
