@@ -1,7 +1,8 @@
 # 使用 xLLM 在 Ascend A3设备 推理 GLM-4.5 / GLM-4.6 基座模型
 
-源码地址：
-国内可用: https://gitcode.com/xLLM-AI/xllm
++ 源码地址：https://github.com/jd-opensource/xllm
+
++ 国内可用: https://gitcode.com/xLLM-AI/xllm
 
 ## 1.拉取镜像环境
 
