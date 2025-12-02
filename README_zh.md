@@ -67,7 +67,7 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 
 ## 系统要求
 
-### 推理
+### 推理(英伟达GPU)
 
 我们提供了"全功能"模型推理的最低和推荐配置。下表中的数据基于以下条件：
 
@@ -96,7 +96,10 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 | GLM-4.5-Air | BF16 | H100 x 8 / H200 x 4   | sglang |
 | GLM-4.5-Air | FP8  | H100 x 4 / H200 x 2   | sglang |
 
-如果您使用 AMD 的 GPU，请查看 [AMD GPU 部署文档](example/AMD_GPU/README_zh.md)。
+### 其他设备
+
+* 使用 [xLLM](https://github.com/jd-opensource/xllm) 在 Ascend A3 设备上进行快速推理，请查看 [Ascend NPU 部署文档](example/Ascend_NPU/README_zh.md)。
+* 使用 AMD 的 GPU 进行推理，请查看 [AMD GPU 部署文档](example/AMD_GPU/README_zh.md)。
 
 ### 微调
 
@@ -134,7 +137,7 @@ pip install -r requirements.txt
 
 ### vLLM
 
-+ BF16和FP8都可以用以下代码启动：
+* BF16和FP8都可以用以下代码启动：
 
 ```shell
 vllm serve zai-org/GLM-4.5-Air \
@@ -152,7 +155,7 @@ vllm serve zai-org/GLM-4.5-Air \
 
 ### SGLang
 
-+ BF16
+* BF16
 
 ```shell
 python3 -m sglang.launch_server \
@@ -170,7 +173,7 @@ python3 -m sglang.launch_server \
   --port 8000
 ```
 
-+ FP8
+* FP8
 
 ```shell
 python3 -m sglang.launch_server \
@@ -189,7 +192,7 @@ python3 -m sglang.launch_server \
   --port 8000
 ```
 
-+ PD 分离
+* PD 分离
 
 以下是使用单机多卡器实现PD分离的简单办法，其中P和D各使用4张GPU。
 
@@ -201,13 +204,13 @@ python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0
 
 ### 请求参数说明
 
-+ 使用`vLLM`和`SGLang`时，发送请求时默认启用思考模式。如果要禁用思考开关，需要添加
+* 使用`vLLM`和`SGLang`时，发送请求时默认启用思考模式。如果要禁用思考开关，需要添加
   `extra_body={"chat_template_kwargs": {"enable_thinking": False}}`参数。
-+ 两者都支持工具调用。请使用OpenAI风格的工具描述格式进行调用。
-+ 具体代码请参考`inference`文件夹中的`api_request.py`。
+* 两者都支持工具调用。请使用OpenAI风格的工具描述格式进行调用。
+* 具体代码请参考`inference`文件夹中的`api_request.py`。
 
 ### 验证
 
-+ 有关工具集成推理，请参阅 [文档](resources/glm_4.6_tir_guide.md)。
+* 有关工具集成推理，请参阅 [文档](resources/glm_4.6_tir_guide.md)。
 
-+ 用于搜索基准测试，我们在 **thinking 模式** 下为搜索工具调用设计了一种特定格式，以支持搜索代理。详细模板请参阅 [此处](resources/trajectory_search.json)。
+* 用于搜索基准测试，我们在 **thinking 模式** 下为搜索工具调用设计了一种特定格式，以支持搜索代理。详细模板请参阅 [此处](resources/trajectory_search.json)。
