@@ -75,7 +75,7 @@ or [ModelScope](https://modelscope.cn/studios/ZhipuAI/GLM-4.5-Demo) or download 
 
 ## System Requirements
 
-### Inference
+### Inference with Nvidia GPUs
 
 We provide minimum and recommended configurations for "full-featured" model inference. The data in the table below is
 based on the following conditions:
@@ -106,7 +106,10 @@ Under the configurations in the table below, the models can utilize their full 1
 | GLM-4.5-Air | BF16      | H100 x 8 / H200 x 4   | sglang         |
 | GLM-4.5-Air | FP8       | H100 x 4 / H200 x 2   | sglang         |
 
-if you are using AMD GPUs, Check [here](example/AMD_GPU/README.md) for AMD GPU deployment documentation.
+### Other Devices
+
+* To perform fast inference on Ascend A3 devices using [xLLM](https://github.com/jd-opensource/xllm), please refer to the [Ascend NPU Deployment Guide](example/Ascend_NPU/README_zh.md).  
+* To run inference on AMD GPUs, please refer to the [AMD GPU Deployment Guide](example/AMD_GPU/README.md).
 
 ### Fine-tuning
 
@@ -145,7 +148,7 @@ Please refer to the `trans_infer_cli.py` code in the `inference` folder.
 
 ### vLLM
 
-+ Both BF16 and FP8 can be started with the following code:
+* Both BF16 and FP8 can be started with the following code:
 
 ```shell
 vllm serve zai-org/GLM-4.5-Air \
@@ -165,7 +168,7 @@ values, please check accordingly).
 
 ### SGLang
 
-+ BF16
+* BF16
 
 ```shell
 python3 -m sglang.launch_server \
@@ -183,7 +186,7 @@ python3 -m sglang.launch_server \
   --port 8000
 ```
 
-+ FP8
+* FP8
 
 ```shell
 python3 -m sglang.launch_server \
@@ -202,7 +205,7 @@ python3 -m sglang.launch_server \
   --port 8000
 ```
 
-+ PD-Disaggregation
+* PD-Disaggregation
 
 The following is a simple method to implement PD-Disaggregation using a single machine with multiple GPUs, P and D each use 4 GPUs.
 
@@ -214,12 +217,12 @@ python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0
 
 ### Request Parameter Instructions
 
-+ When using `vLLM` and `SGLang`, thinking mode is enabled by default when sending requests. If you want to disable the
+* When using `vLLM` and `SGLang`, thinking mode is enabled by default when sending requests. If you want to disable the
   thinking switch, you need to add the `extra_body={"chat_template_kwargs": {"enable_thinking": False}}` parameter.
-+ Both support tool calling. Please use OpenAI-style tool description format for calls.
-+ For specific code, please refer to `api_request.py` in the `inference` folder.
+* Both support tool calling. Please use OpenAI-style tool description format for calls.
+* For specific code, please refer to `api_request.py` in the `inference` folder.
 
-### Evaluation 
+### Evaluation
 
-+ For tool-integrated reasoning, please refer to [this doc](resources/glm_4.6_tir_guide.md).
-+ For search benchmark, we design a specific format for searching toolcall in thinking mode to support search agent, please refer to [this](resources/trajectory_search.json). for the detailed template.
+* For tool-integrated reasoning, please refer to [this doc](resources/glm_4.6_tir_guide.md).
+* For search benchmark, we design a specific format for searching toolcall in thinking mode to support search agent, please refer to [this](resources/trajectory_search.json). for the detailed template.

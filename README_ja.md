@@ -63,7 +63,7 @@ GLM-4.5とGLM-4.5-Airはどちらもハイブリッド推論モデルで、2つ�
 
 ## システム要件
 
-### 推論
+### 推論（NVIDIA GPU）
 
 「フル機能」のモデル推論のための最小および推奨構成を提供します。以下の表のデータは次の条件に基づいています：
 
@@ -91,7 +91,10 @@ GLM-4.5とGLM-4.5-Airはどちらもハイブリッド推論モデルで、2つ�
 | GLM-4.5-Air | BF16      | H100 x 8 / H200 x 4   | sglang         |
 | GLM-4.5-Air | FP8       | H100 x 4 / H200 x 2   | sglang         |
 
-AMD GPUを使用している場合は、[こちら](example/AMD_GPU/README.md)のAMD GPUデプロイメントドキュメントをご確認ください。
+### その他のデバイス
+
+* Ascend A3 デバイスで [xLLM](https://github.com/jd-opensource/xllm) を使用して高速推論を行う場合は、[Ascend NPU デプロイメントガイド](example/Ascend_NPU/README_zh.md) をご参照ください。  
+* AMD GPU で推論を実行する場合は、[AMD GPU デプロイメントガイド](example/AMD_GPU/README_zh.md) をご参照ください。
 
 ### ファインチューニング
 
@@ -129,7 +132,7 @@ pip install -r requirements.txt
 
 ### vLLM
 
-+ BF16とFP8の両方は以下のコードで起動できます：
+* BF16とFP8の両方は以下のコードで起動できます：
 
 ```shell
 vllm serve zai-org/GLM-4.5-Air \
@@ -146,7 +149,7 @@ vllm serve zai-org/GLM-4.5-Air \
 
 ### SGLang
 
-+ BF16
+* BF16
 
 ```shell
 python3 -m sglang.launch_server \
@@ -164,7 +167,7 @@ python3 -m sglang.launch_server \
   --port 8000
 ```
 
-+ FP8
+* FP8
 
 ```shell
 python3 -m sglang.launch_server \
@@ -183,7 +186,7 @@ python3 -m sglang.launch_server \
   --port 8000
 ```
 
-+ PD-Disaggregation
+* PD-Disaggregation
 
 以下は、単一マシンの複数GPUを使用してPD-Disaggregationを実装するシンプルな方法で、PとDがそれぞれ4つのGPUを使用します。
 
@@ -195,11 +198,11 @@ python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0
 
 ### リクエストパラメータの説明
 
-+ `vLLM`と`SGLang`を使用する場合、リクエストを送信する際にデフォルトで思考モードが有効になります。思考スイッチを無効にしたい場合は、`extra_body={"chat_template_kwargs": {"enable_thinking": False}}`パラメータを追加する必要があります。
-+ 両方ともツール呼び出しをサポートしています。呼び出しにはOpenAIスタイルのツール記述形式を使用してください。
-+ 具体的なコードについては、`inference`フォルダの`api_request.py`を参照してください。
+* `vLLM`と`SGLang`を使用する場合、リクエストを送信する際にデフォルトで思考モードが有効になります。思考スイッチを無効にしたい場合は、`extra_body={"chat_template_kwargs": {"enable_thinking": False}}`パラメータを追加する必要があります。
+* 両方ともツール呼び出しをサポートしています。呼び出しにはOpenAIスタイルのツール記述形式を使用してください。
+* 具体的なコードについては、`inference`フォルダの`api_request.py`を参照してください。
 
 ### 評価
 
-+ ツール統合推論については、[このドキュメント](resources/glm_4.6_tir_guide.md)を参照してください。
-+ 検索ベンチマークについて、私たちは検索エージェントをサポートするために、思考モードでの検索ツール呼び出し用の特定のフォーマットを設計しました。詳細なテンプレートについては[こちら](resources/trajectory_search.json)を参照してください。
+* ツール統合推論については、[このドキュメント](resources/glm_4.6_tir_guide.md)を参照してください。
+* 検索ベンチマークについて、私たちは検索エージェントをサポートするために、思考モードでの検索ツール呼び出し用の特定のフォーマットを設計しました。詳細なテンプレートについては[こちら](resources/trajectory_search.json)を参照してください。
