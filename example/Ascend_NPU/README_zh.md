@@ -10,11 +10,11 @@
 
 ```bash
 # A2 x86
-docker pull quay.io/jd_xllm/xllm-ai:xllm-0.7.1-dev-hb-rc2-x86
+docker pull quay.io/jd_xllm/xllm-ai:xllm-dev-hb-rc2-x86
 # A2 arm
-docker pull quay.io/jd_xllm/xllm-ai:xllm-0.7.1-dev-hb-rc2-arm
+docker pull quay.io/jd_xllm/xllm-ai:xllm-dev-hb-rc2-arm
 # A3 arm
-docker pull quay.io/jd_xllm/xllm-ai:xllm-0.7.1-dev-hc-rc2-arm
+docker pull quay.io/jd_xllm/xllm-ai:xllm-dev-hc-rc2-arm
 ```
 
 **注意**: A2 机器性能未进行压测。
@@ -36,7 +36,7 @@ sudo docker run -it --ipc=host -u 0 --privileged --name mydocker --network=host 
  -v /export/home:/export/home \
  -v /home/:/home/  \
  -w /export/home \
- quay.io/jd_xllm/xllm-ai:xllm-0.7.1-dev-hb-rc2-x86
+ quay.io/jd_xllm/xllm-ai:xllm-dev-hb-rc2-x86
 ```
 
 ## 2.拉取源码并编译
@@ -46,7 +46,8 @@ sudo docker run -it --ipc=host -u 0 --privileged --name mydocker --network=host 
 ```bash
 git clone https://github.com/jd-opensource/xllm
 cd xllm 
-git checkout release/v0.7.0
+git checkout 0c082f385e9b08a9e475247e64448b07bc37de52
+#feat: add GLM-4.7 detector implementation and update tool call parser.
 git submodule init
 git submodule update
 ```
