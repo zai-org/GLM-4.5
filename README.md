@@ -21,10 +21,10 @@
 
 **GLM-4.7**, your new coding partner, is coming with the following features:
 
-- **Core Coding:** GLM-4.7 brings clear gains, compared to its predecessor GLM-4.6, in multilingual agentic coding and terminal-based tasks, including (73.8%, +5.8%) on SWE-bench, (66.7%, +12.9%) on SWE-bench Multilingual, and (41%, +10.0%) on Terminal Bench. GLM-4.7 also supports thinking before acting, with significant improvements on complex tasks in mainstream agent frameworks such as Claude Code, Kilo Code, Cline, and Roo Code.
-- **Vibe Coding:** GLM-4.7 takes a major step forward in UI quality. It produces cleaner, more modern webpages and generates better-looking slides with more accurate layout and sizing.
-- **Tool Using:** Tool using is significantly improved. GLM-4.7 achieves open-source SOTA results on multi-step tool using benchmarks such as τ^2-Bench and on web browsing via BrowserComp.
-- **Complex Reasoning:** GLM-4.7 delivers broad improvements in reasoning across math, coding, and logic problems.
+- **Core Coding**: GLM-4.7 brings clear gains, compared to its predecessor GLM-4.6, in multilingual agentic coding and terminal-based tasks, including (73.8%, +5.8%) on SWE-bench, (66.7%, +12.9%) on SWE-bench Multilingual, and (41%, +16.5%) on Terminal Bench 2.0. GLM-4.7 also supports thinking before acting, with significant improvements on complex tasks in mainstream agent frameworks such as Claude Code, Kilo Code, Cline, and Roo Code.
+- **Vibe Coding**: GLM-4.7 takes a big step forward in improving UI quality. It produces cleaner, more modern webpages and generates better-looking slides with more accurate layout and sizing.
+- **Tool Using**: GLM-4.7 achieves significantly improvements in Tool using. Significant better performances can be seen on benchmarks such as τ^2-Bench and on web browsing via BrowseComp.
+- **Complex Reasoning**: GLM-4.7 delivers a substantial boost in mathematical and reasoning capabilities, achieving (42.8%, +12.4%) on the HLE (Humanity’s Last Exam) benchmark compared to GLM-4.6.
 
 More general, one would also witness significant improvements in many other scenarios such as chat, creative writing, and role-play scenario.
 
@@ -38,8 +38,9 @@ GLM-4.7 further enhances **Interleaved Thinking** (a feature introduced since GL
 - **Interleaved Thinking**: The model thinks before every response and tool calling, improving instruction following and the quality of generation.
 - **Preserved Thinking**: In coding agent scenarios, the model automatically retains all thinking blocks across multi-turn conversations, reusing the existing reasoning instead of re-deriving from scratch. This reduces information loss and inconsistencies, and is well-suited for long-horizon, complex tasks.
 - **Turn-level Thinking**: The model supports per-turn control over reasoning within a session—disable thinking for lightweight requests to reduce latency/cost, enable it for complex tasks to improve accuracy and stability.
-
+ 
 More details: https://docs.z.ai/guides/capabilities/thinking-mode
+
 
 ### GLM-4.6
 
@@ -245,6 +246,7 @@ thinking switch, you need to add the `extra_body={"chat_template_kwargs": {"enab
 
 - For tool-integrated reasoning, please refer to [this doc](resources/glm_4.6_tir_guide.md).
 - For search benchmark, we design a specific format for searching toolcall in thinking mode to support search agent, please refer to [this](resources/trajectory_search.json). for the detailed template.
+
 
 ## Citation
 
