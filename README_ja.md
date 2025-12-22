@@ -6,9 +6,9 @@
 <img src=resources/logo.svg width="15%"/>
 </div>
 <p align="center">
-    👋 <a href="resources/WECHAT.md" target="_blank">WeChat</a>または<a href="https://discord.gg/QR7SARHRxK" target="_blank">Discord</a>コミュニティにご参加ください。
+    👋 <a href="https://discord.gg/QR7SARHRxK" target="_blank">Discord</a> コミュニティにご参加ください。
     <br>
-    📖 GLM-4.7の<a href="https://z.ai/blog/glm-4.7" target="_blank">技術ブログ</a>、<a href="https://arxiv.org/abs/2508.06471" target="_blank">技術レポート(GLM-4.5)</a>、<a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank">Zhipu AI技術ドキュメント</a>をご覧ください。
+    📖 GLM-4.7の <a href="https://z.ai/blog/glm-4.7" target="_blank">技術ブログ</a>、<a href="https://arxiv.org/abs/2508.06471" target="_blank">技術レポート(GLM-4.5)</a>、<a href="https://zhipu-ai.feishu.cn/wiki/Gv3swM0Yci7w7Zke9E0crhU7n7D" target="_blank">Zhipu AI技術ドキュメント</a>をご覧ください。
     <br>
     📍 GLM-4.7 APIサービスを<a href="https://docs.z.ai/guides/llm/glm-4.7">Z.ai APIプラットフォーム</a>でご利用いただけます。
     <br>
@@ -53,8 +53,6 @@ GLM-4.5と比較して、**GLM-4.6**はいくつかの重要な改善をもた�
 
 私たちは、エージェント、推論、コーディングをカバーする8つの公開ベンチマークでGLM-4.6を評価しました。結果はGLM-4.5に対する明確な改善を示し、GLM-4.6は**DeepSeek-V3.1-Terminus**や**Claude Sonnet 4**などの国内外の主要モデルに対しても競争上の優位性を保持しています。
 
-![bench](resources/bench_glm46.png)
-
 ### GLM-4.5
 
 **GLM-4.5**シリーズモデルは、インテリジェントエージェント向けに設計された基盤モデルです。GLM-4.5は総パラメータ数**355**億、アクティブパラメータ数**32**億を有し、GLM-4.5-Airはより軽量な設計で総パラメータ数**106**億、アクティブパラメータ数**12**億を採用しています。GLM-4.5モデルは、推論、コーディング、インテリジェントエージェント機能を統合し、インテリジェントエージェントアプリケーションの複雑な要求に応えます。
@@ -65,11 +63,7 @@ GLM-4.5とGLM-4.5-Airはどちらもハイブリッド推論モデルで、2つ�
 
 12の業界標準ベンチマークにわたる包括的な評価において、GLM-4.5は**63.2**というスコアで例外的な性能を達成し、すべてのプロプライエタリおよびオープンソースモデルの中で**第3位**にランクインしています。特に、GLM-4.5-Airは優れた効率性を維持しながら**59.8**という競争力のある結果を提供しています。
 
-![bench](resources/bench.png)
-
-より多くの評価結果、ショーケース、技術詳細については、[技術レポート](https://arxiv.org/abs/2508.06471)または[技術ブログ](https://z.ai/blog/glm-4.5)をご覧ください。
-
-モデルコード、ツールパーサー、推論パーサーは、[transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、[vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)、[SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py)の実装でご覧いただけます。
+より多くの評価結果、ショーケース、技術詳細については、[技術レポート](https://arxiv.org/abs/2508.06471)。
 
 ## モデルのダウンロード
 
@@ -85,6 +79,8 @@ GLM-4.5とGLM-4.5-Airはどちらもハイブリッド推論モデルで、2つ�
 | GLM-4.5-Air-FP8  | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air-FP8)   | 106B-A12B  | FP8       |
 | GLM-4.5-Base     | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Base)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Base)         | 355B-A32B  | BF16      |
 | GLM-4.5-Air-Base | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air-Base)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air-Base) | 106B-A12B  | BF16      |
+
+モデルコード、ツールパーサー、推論パーサーは、[transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、[vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)、[SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py)の実装でご覧いただけます。
 
 ## システム要件
 

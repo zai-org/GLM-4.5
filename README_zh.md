@@ -65,10 +65,7 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 在我们对12项行业标准基准的全面评估中，GLM-4.5表现卓越，得分 **63.2**，在所有专有和开源模型中排名**第3**
 。值得注意的是，GLM-4.5-Air在保持优异效率的同时，仍取得了 **59.8** 的竞争性成绩。
 
-如需了解更多评估结果、展示案例和技术细节，请访问我们的 [技术报告](https://arxiv.org/abs/2508.06471) 或者 [技术博客](https://z.ai/blog/glm-4.5)。
-
-模型代码、工具解析器和推理解析器可在 [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、 [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)
-和 [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py) 的找到具体实现。
+如需了解更多评估结果、展示案例和技术细节，请访问我们的 [技术报告](https://arxiv.org/abs/2508.06471)。
 
 ## 模型下载
 
@@ -84,6 +81,9 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 | GLM-4.5-Air-FP8  | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air-FP8)   | 106B-A12B  | FP8       |
 | GLM-4.5-Base     | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Base)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Base)         | 355B-A32B  | BF16      |
 | GLM-4.5-Air-Base | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air-Base)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air-Base) | 106B-A12B  | BF16      |
+
+模型代码、工具解析器和推理解析器可在 [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、 [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)
+和 [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py) 的找到具体实现。
 
 ## 系统要求
 
