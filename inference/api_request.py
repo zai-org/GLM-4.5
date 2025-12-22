@@ -68,7 +68,7 @@ client = OpenAI(
     base_url=openai_api_base,
 )
 completion = client.chat.completions.create(
-    model="zai-org/GLM-4.5",
+    model="zai-org/GLM-4.7",
     messages=messages,
     max_tokens=4096,
     temperature=0.0,
@@ -83,7 +83,7 @@ messages.append(tools_messages[0])
 
 ## This part is to simulate the tool response
 completion_2 = client.chat.completions.create(
-    model="zai-org/GLM-4.5",
+    model="zai-org/GLM-4.7",
     messages=messages,
     tools=tools,
     extra_body={"chat_template_kwargs": {"enable_thinking": False}},
