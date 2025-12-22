@@ -38,9 +38,8 @@ GLM-4.7 further enhances **Interleaved Thinking** (a feature introduced since GL
 - **Interleaved Thinking**: The model thinks before every response and tool calling, improving instruction following and the quality of generation.
 - **Preserved Thinking**: In coding agent scenarios, the model automatically retains all thinking blocks across multi-turn conversations, reusing the existing reasoning instead of re-deriving from scratch. This reduces information loss and inconsistencies, and is well-suited for long-horizon, complex tasks.
 - **Turn-level Thinking**: The model supports per-turn control over reasoning within a session—disable thinking for lightweight requests to reduce latency/cost, enable it for complex tasks to improve accuracy and stability.
- 
-More details: https://docs.z.ai/guides/capabilities/thinking-mode
 
+More details: https://docs.z.ai/guides/capabilities/thinking-mode
 
 ### GLM-4.6
 
@@ -246,7 +245,6 @@ thinking switch, you need to add the `extra_body={"chat_template_kwargs": {"enab
 
 - For tool-integrated reasoning, please refer to [this doc](resources/glm_4.6_tir_guide.md).
 - For search benchmark, we design a specific format for searching toolcall in thinking mode to support search agent, please refer to [this](resources/trajectory_search.json). for the detailed template.
-
 
 ## Citation
 
