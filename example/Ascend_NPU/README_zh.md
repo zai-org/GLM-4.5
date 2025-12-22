@@ -122,7 +122,7 @@ export ALLOW_INTERNAL_FORMAT=1
 
 export ATB_LAYER_INTERNAL_TENSOR_REUSE=1
 export ATB_LLM_ENABLE_AUTO_TRANSPOSE=0
-export ATB_CONVERT_NCHW_TO_ND=1
+export ATB_CONVERT_NCHW_TO_AND=1
 export ATB_LAUNCH_KERNEL_WITH_TILING=1
 export ATB_OPERATION_EXECUTE_ASYNC=2
 export ATB_CONTEXT_WORKSPACE_SIZE=0
@@ -197,7 +197,7 @@ done
 
 日志出现"Brpc Server Started"表示服务成功拉起。拉起成功截图：
 
-![success](image.png)
+![success](./image.png)
 
 ## 其他可选环境变量
 
@@ -318,7 +318,6 @@ python3 quant_glm_moe_w8a8.py --model_path /oripath --save_path /w8a8path --trus
 #并在生成的权重config中加入参数："attn_quantize": "w8a8"
 cp zai-org/GLM-4.5/chat_template.jinja ./
 ```
-
 
 ## 测试结果
 
