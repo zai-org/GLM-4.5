@@ -21,10 +21,10 @@
 
 **GLM-4.7**，您的新编程伙伴，具备以下特性：
 
-- **核心编程能力：** 与前代 GLM-4.6 相比，GLM-4.7 在多语言智能体编程和终端任务方面取得了显著提升，包括 SWE-bench（73.8%，+5.8%）、SWE-bench Multilingual（66.7%，+12.9%）和 Terminal Bench（41%，+10.0%）。GLM-4.7 还支持先思考后行动，在 Claude Code、Kilo Code、Cline 和 Roo Code 等主流智能体框架的复杂任务上有显著改进。
-- **氛围编程：** GLM-4.7 在 UI 质量方面迈出了重要一步。它能生成更简洁、更现代的网页，并制作出布局和尺寸更精准、外观更美观的幻灯片。
-- **工具使用：** 工具使用能力显著增强。GLM-4.7 在 τ²-Bench 等多步工具使用基准测试以及 BrowserComp 网页浏览测试中取得了开源模型的 SOTA 成绩。
-- **复杂推理：** GLM-4.7 在数学、编程和逻辑问题的推理能力上实现了全面提升。
+- **核心编程能力**：与前代 GLM-4.6 相比，GLM-4.7 在多语言智能体编程和终端任务方面取得了显著提升，包括 SWE-bench（73.8%，+5.8%）、SWE-bench Multilingual（66.7%，+12.9%）和 Terminal Bench 2.0（41%，+16.5%）。GLM-4.7 还支持先思考后行动，在 Claude Code、Kilo Code、Cline 和 Roo Code 等主流智能体框架的复杂任务上有显著改进。
+- **氛围编程**：GLM-4.7 在 UI 质量提升方面迈出了重要一步。它能生成更简洁、更现代的网页，并制作出布局和尺寸更精准、外观更美观的幻灯片。
+- **工具使用**：GLM-4.7 在工具使用能力上取得了显著改进。在 τ²-Bench 等基准测试以及 BrowseComp 网页浏览测试中表现出明显更优的性能。
+- **复杂推理**：GLM-4.7 在数学和推理能力上实现了大幅提升，在 HLE（人类终极考试）基准测试中相比 GLM-4.6 取得了（42.8%，+12.4%）的成绩。
 
 更广泛地说，在聊天、创意写作和角色扮演等许多其他场景中，您也将看到显著的改进。
 
@@ -167,11 +167,13 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 
 ```shell
 vllm serve zai-org/GLM-4.7-FP8 \
-    --tensor-parallel-size 8 \
-    --tool-call-parser glm47 \
-    --reasoning-parser glm45 \
-    --enable-auto-tool-choice \
-    --served-model-name glm-4.7-fp8
+     --tensor-parallel-size 4 \
+     --speculative-config.method mtp \
+     --speculative-config.num_speculative_tokens 1 \
+     --tool-call-parser glm47 \
+     --reasoning-parser glm45 \
+     --enable-auto-tool-choice \
+     --served-model-name glm-4.7-fp8
 ```
 
 ### SGLang

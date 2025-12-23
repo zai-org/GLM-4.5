@@ -175,11 +175,13 @@ GLM-4.6およびGLM-4.5については、`requirements.txt`の設定に従って
 
 ```shell
 vllm serve zai-org/GLM-4.7-FP8 \
-    --tensor-parallel-size 8 \
-    --tool-call-parser glm47 \
-    --reasoning-parser glm45 \
-    --enable-auto-tool-choice \
-    --served-model-name glm-4.7-fp8
+     --tensor-parallel-size 4 \
+     --speculative-config.method mtp \
+     --speculative-config.num_speculative_tokens 1 \
+     --tool-call-parser glm47 \
+     --reasoning-parser glm45 \
+     --enable-auto-tool-choice \
+     --served-model-name glm-4.7-fp8
 ```
 
 ### SGLang
