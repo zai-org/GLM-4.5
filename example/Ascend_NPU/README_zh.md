@@ -1,4 +1,4 @@
-# 使用 xLLM 在 Ascend A3设备 推理 GLM-4.5 / GLM-4.6 基座模型
+ # 使用 xLLM 在 Ascend A3设备 推理 GLM-4.5 / 4.6 / 4.7 基座模型
 
 + 源码地址：https://github.com/jd-opensource/xllm
 
@@ -46,8 +46,7 @@ sudo docker run -it --ipc=host -u 0 --privileged --name mydocker --network=host 
 ```bash
 git clone https://github.com/jd-opensource/xllm
 cd xllm 
-git checkout 0c082f385e9b08a9e475247e64448b07bc37de52
-#feat: add GLM-4.7 detector implementation and update tool call parser.
+git checkout 31b7cafd60ef290c38cbc2320715407a6449af2f
 git submodule init
 git submodule update
 ```
@@ -75,7 +74,7 @@ yum install numactl
 python setup.py build
 ```
 
-## 3.启动模型 - GLM-4.5 / GLM-4.6 BF16版本
+## 3.启动模型
 
 ### 若机器为重启后初次拉起服务，需先执行以下脚本对device进行初始化
 
@@ -134,7 +133,7 @@ export HCCL_OP_EXPANSION_MODE="AIV"
 export HCCL_IF_BASE_PORT=2864
 ```
 
-## 启动命令 - GLM-4.5 / GLM-4.6 W8A8版本
+## 启动命令 - GLM-4.5 / 4/6 / 4.7 （W8A8权重可8卡拉起）
 
 ```bash
 BATCH_SIZE=256
@@ -194,6 +193,7 @@ done
 #--draft_model              mtp - mtp权重路径
 #--draft_devices            mtp - mtp推理设备(与主模型同一)
 #--num_speculative_tokens   mtp - 预测token数
+#--tool_call_parser=glm47   开启 glm4.7 tool_parser
 ```
 
 日志出现"Brpc Server Started"表示服务成功拉起。拉起成功截图：
@@ -213,6 +213,143 @@ export PROFILING_MODE=dynamic
 \rm -rf ~/dynamic_profiling_socket_*
 ```
 
+## 启动命令 - 双机16卡拉起样例
+
+#### Node0 (master)
+```bash
+
+MASTER_NODE_ADDR="11.87.49.110:10015"
+LOCAL_HOST="11.87.49.110"
+# Service Port
+START_PORT=18994
+START_DEVICE=0
+LOG_DIR="logs"
+NNODES=16
+LOCAL_NODES=8
+START_LISTEN_PORT=16009
+
+export HCCL_IF_BASE_PORT=2864
+
+for (( i=0; i<$LOCAL_NODES; i++ ))
+do
+  PORT=$((START_PORT + i))
+  DEVICE=$((START_DEVICE + i))
+  LISTEN_PORT=$((START_LISTEN_PORT + i))
+  LOG_FILE="$LOG_DIR/node_$i.log"
+  #nohup $XLLM_PATH \
+  nohup numactl -C $((DEVICE*12))-$((DEVICE*12+11)) $XLLM_PATH \
+    --model $MODEL_PATH  -model_id glmmoe \
+    --host $LOCAL_HOST \
+    --port $PORT \
+    --devices="npu:$DEVICE" \
+    --master_node_addr=$MASTER_NODE_ADDR \
+    --nnodes=$NNODES \
+    --node_rank=$i \
+    --max_memory_utilization=0.86 \
+    --max_tokens_per_batch=20000 \
+    --max_seqs_per_batch=$BATCH_SIZE \
+    --enable_prefix_cache=false \
+    --enable_chunked_prefill=false \
+    --communication_backend=hccl \
+    --enable_schedule_overlap=false \
+    --enable_acl_graph=false \
+    --rank_tablefile=hccl_8+8.json \
+    > $LOG_FILE 2>&1 &
+
+done
+```
+
+#### Node1 (worker)
+```bash
+
+MASTER_NODE_ADDR="11.87.49.110:10015"
+LOCAL_HOST="11.87.49.111"
+# Service Port
+START_PORT=18994
+START_DEVICE=0
+LOG_DIR="logs"
+NNODES=16
+LOCAL_NODES=8
+START_LISTEN_PORT=16009
+
+export HCCL_IF_BASE_PORT=2864
+
+for (( i=0; i<$LOCAL_NODES; i++ ))
+do
+  PORT=$((START_PORT + i))
+  DEVICE=$((START_DEVICE + i))
+  LISTEN_PORT=$((START_LISTEN_PORT + i))
+  LOG_FILE="$LOG_DIR/node_$i.log"
+  #nohup $XLLM_PATH \
+  nohup numactl -C $((DEVICE*12))-$((DEVICE*12+11)) $XLLM_PATH \
+    --model $MODEL_PATH  -model_id glmmoe \
+    --host $LOCAL_HOST \
+    --port $PORT \
+    --devices="npu:$DEVICE" \
+    --master_node_addr=$MASTER_NODE_ADDR \
+    --nnodes=$NNODES \
+    --node_rank=$((i+LOCAL_NODES)) \
+    --max_memory_utilization=0.86 \
+    --max_tokens_per_batch=20000 \
+    --max_seqs_per_batch=$BATCH_SIZE \
+    --enable_prefix_cache=false \
+    --enable_chunked_prefill=false \
+    --communication_backend=hccl \
+    --enable_schedule_overlap=false \
+    --enable_acl_graph=false \
+    --rank_tablefile=hccl_8+8.json \
+    > $LOG_FILE 2>&1 &
+
+done
+```
+
+#### ranktable样例
+ ranktable配置指导：https://www.hiascend.com/document/detail/zh/canncommercial/83RC1/hccl/hcclug/hcclug_000014.html
+
+```json
+{
+    "version": "1.0",
+    "server_count": "2",
+    "server_list": [
+        {
+            "server_id": "11.87.49.110",
+            "device": [
+                {
+                    "device_id": "0",
+                    "device_ip": "11.86.23.210",
+                    "rank_id": "0"
+                },
+                ...
+                {
+                    "device_id": "7",
+                    "device_ip": "11.86.23.217",
+                    "rank_id": "7"
+                }
+            ],
+            "host_nic_ip": "reserve"
+        },
+        {
+            "server_id": "11.87.49.111",
+            "device": [
+                {
+                    "device_id": "0",
+                    "device_ip": "11.87.63.202",
+                    "rank_id": "8"
+                },
+                ...
+                {
+                    "device_id": "7",
+                    "device_ip": "11.87.63.209",
+                    "rank_id": "15"
+                }
+            ],
+            "host_nic_ip": "reserve"
+        }
+    ],
+    "status": "completed"
+}
+```
+
 ## EX1.mtp权重导出
 
 ```bash
@@ -225,7 +362,19 @@ vi export_deepseek_mtp.py
 python export_deepseek_mtp.py --input_dir ${GLM-4.5-path} --output_dir ${GLM-4.5-mtp-path}
 ```
 
-## EX2.Glm-4.5 权重量化
+## EX2.device NUMA亲和性查看
+
+命令：
+```bash
+npu-smi info -t topo
+```
+前述命令中
+```bash
+numactl -C $((DEVICE*12))-$((DEVICE*12+11))
+```
+表示该进程绑在对应亲和的核上，可根据机器具体情况修改绑定的核id
+
+## EX3.Glm-4.5 权重量化
 
 ### A. 开源仓下载：
 
