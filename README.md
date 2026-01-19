@@ -41,7 +41,7 @@ GLM-4.7 further enhances **Interleaved Thinking** (a feature introduced since GL
 
 More details: https://docs.z.ai/guides/capabilities/thinking-mode
 
-At the same time, we provide the lightweight model GLM-4.7-Flash, offering a new option for lightweight deployment that balances performance and efficiency.
+We also provide the lightweight 30B-A3B model GLM-4.7-Flash, offering a new option for lightweight deployment that balances performance and efficiency.
 
 ### GLM-4.6
 

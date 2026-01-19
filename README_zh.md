@@ -41,7 +41,7 @@ GLM-4.7 进一步增强了**交错思考**（自 GLM-4.5 引入的功能），�
 
 更多详情：https://docs.z.ai/guides/capabilities/thinking-mode
 
-同时，我们提供了轻量级模型 GLM-4.7-Flash，为轻量化部署提供了一个兼顾性能与效率的新选择。
+我们也提供轻量级的 30B-A3B 模型 GLM-4.7-Flash，为轻量化部署提供了一个兼顾性能与效率的新选择。
 
 ### GLM-4.6
 
