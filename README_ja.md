@@ -41,6 +41,8 @@ GLM-4.7 は**インターリーブ思考**（GLM-4.5 から導入された機能
 
 詳細：https://docs.z.ai/guides/capabilities/thinking-mode
 
+また、軽量モデルの GLM-4.7-Flash も提供しており、軽量デプロイにおいて性能と効率を両立する新たな選択肢となります。
+
 ### GLM-4.6
 
 GLM-4.5と比較して、**GLM-4.6**はいくつかの重要な改善をもたらします：
@@ -70,9 +72,10 @@ GLM-4.5とGLM-4.5-Airはどちらもハイブリッド推論モデルで、2つ�
 | モデル            | ダウンロードリンク                                                                                                                                | モデルサイズ | 精度 |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|
 | GLM-4.7          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.7)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.7)                   | 355B-A32B  | BF16      |
-| GLM-4.7-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.7-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8)           | 355B-A32B  | FP8      |
+| GLM-4.7-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.7-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8)           | 355B-A32B  | FP8       |
+| GLM-4.7-Flash    | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.7-Flash)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.7-Flash)       | 30B-A3B    | BF16      |
 | GLM-4.6          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6)                   | 355B-A32B  | BF16      |
-| GLM-4.6-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6-FP8)           | 355B-A32B  | FP8      |
+| GLM-4.6-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6-FP8)           | 355B-A32B  | FP8       |
 | GLM-4.5          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5)                   | 355B-A32B  | BF16      |
 | GLM-4.5-Air      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air)           | 106B-A12B  | BF16      |
 | GLM-4.5-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-FP8)           | 355B-A32B  | FP8       |
@@ -80,7 +83,8 @@ GLM-4.5とGLM-4.5-Airはどちらもハイブリッド推論モデルで、2つ�
 | GLM-4.5-Base     | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Base)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Base)         | 355B-A32B  | BF16      |
 | GLM-4.5-Air-Base | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air-Base)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air-Base) | 106B-A12B  | BF16      |
 
-モデルコード、ツールパーサー、推論パーサーは、[transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、[vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)、[SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py)の実装でご覧いただけます。
+- GLM-4.5、GLM-4.6 および GLM-4.7 のモデルコード、ツールパーサー（tool parser）と推論パーサー（reasoning parser）は、[transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe)、[vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)、[SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py) の実装で確認できます。
+- GLM-4.7-Flash のモデルコードは、[transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe_lite)、[vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_lite_mtp.py)、[SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe_lite.py) の実装で確認できます。
 
 ## システム要件
 
@@ -96,21 +100,23 @@ GLM-4.5とGLM-4.5-Airはどちらもハイブリッド推論モデルで、2つ�
 
 以下の表の構成でモデルを実行できます：
 
-| モデル       | 精度 | GPUタイプと数量   | テストフレームワーク |
-|-------------|-----------|----------------------|----------------|
-| GLM-4.5     | BF16      | H100 x 16 / H200 x 8 | sglang         |
-| GLM-4.5     | FP8       | H100 x 8 / H200 x 4  | sglang         |
-| GLM-4.5-Air | BF16      | H100 x 4 / H200 x 2  | sglang         |
-| GLM-4.5-Air | FP8       | H100 x 2 / H200 x 1  | sglang         |
+| モデル           | 精度 | GPUタイプと数量   |
+|---------------|-----------|----------------------|
+| GLM-4.5       | BF16      | H100 x 16  |
+| GLM-4.5       | FP8       | H100 x 8   |
+| GLM-4.5-Air   | BF16      | H100 x 4   |
+| GLM-4.5-Air   | FP8       | H100 x 2   |
+| GLM-4.7-Flash | BF16       | H100 x 2   |
 
 以下の表の構成では、モデルは完全な128Kコンテキスト長を利用できます：
 
-| モデル       | 精度 | GPUタイプと数量    | テストフレームワーク |
-|-------------|-----------|-----------------------|----------------|
-| GLM-4.5     | BF16      | H100 x 32 / H200 x 16 | sglang         |
-| GLM-4.5     | FP8       | H100 x 16 / H200 x 8  | sglang         |
-| GLM-4.5-Air | BF16      | H100 x 8 / H200 x 4   | sglang         |
-| GLM-4.5-Air | FP8       | H100 x 4 / H200 x 2   | sglang         |
+| モデル           | 精度        | GPUタイプと数量 |
+|---------------|-----------|-----------|
+| GLM-4.5       | BF16      | H100 x 32 |
+| GLM-4.5       | FP8       | H100 x 16 |
+| GLM-4.5-Air   | BF16      | H100 x 8  |
+| GLM-4.5-Air   | FP8       | H100 x 4  |
+| GLM-4.7-Flash | BF16      | H100 x 2  |
 
 ### その他のデバイス
 
