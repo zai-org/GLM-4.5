@@ -41,6 +41,8 @@ GLM-4.7 further enhances **Interleaved Thinking** (a feature introduced since GL
 
 More details: https://docs.z.ai/guides/capabilities/thinking-mode
 
+At the same time, we provide the lightweight model GLM-4.7-Flash, offering a new option for lightweight deployment that balances performance and efficiency.
+
 ### GLM-4.6
 
 Compared with GLM-4.5, **GLM-4.6**  brings several key improvements:
@@ -78,9 +80,10 @@ For more eval results, show cases, and technical details, please visit our [tech
 | Model            | Download Links                                                                                                                                | Model Size | Precision |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|
 | GLM-4.7          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.7)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.7)                   | 355B-A32B  | BF16      |
-| GLM-4.7-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.7-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8)           | 355B-A32B  | FP8      |
+| GLM-4.7-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.7-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.7-FP8)           | 355B-A32B  | FP8       |
+| GLM-4.7-Flash    | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.7-Flash)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.7-Flash)       | 30B-A3B    | BF16      |
 | GLM-4.6          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6)                   | 355B-A32B  | BF16      |
-| GLM-4.6-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6-FP8)           | 355B-A32B  | FP8      |
+| GLM-4.6-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6-FP8)           | 355B-A32B  | FP8       |
 | GLM-4.5          | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5)                   | 355B-A32B  | BF16      |
 | GLM-4.5-Air      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air)           | 106B-A12B  | BF16      |
 | GLM-4.5-FP8      | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-FP8)           | 355B-A32B  | FP8       |
@@ -88,9 +91,8 @@ For more eval results, show cases, and technical details, please visit our [tech
 | GLM-4.5-Base     | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Base)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Base)         | 355B-A32B  | BF16      |
 | GLM-4.5-Air-Base | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5-Air-Base)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5-Air-Base) | 106B-A12B  | BF16      |
 
-The model code, tool parser and reasoning parser can be found in the implementation
-of [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe), [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py)
-and [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py).
+- The model code, tool parser and reasoning parser of GLM-4.5, GLM-4.6 and GLM-4.7 can be found in the implementation of [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe), [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_mtp.py) and [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe.py).
+- The model code of  GLM-4.7-Flash can be found in the implementation of [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4_moe_lite), [vLLM](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/models/glm4_moe_lite_mtp.py) and [SGLang](https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/glm4_moe_lite.py).
 
 ## System Requirements
 
@@ -109,21 +111,23 @@ based on the following conditions:
 
 The models can run under the configurations in the table below:
 
-| Model       | Precision | GPU Type and Count   | Test Framework |
-|-------------|-----------|----------------------|----------------|
-| GLM-4.5     | BF16      | H100 x 16 / H200 x 8 | sglang         |
-| GLM-4.5     | FP8       | H100 x 8 / H200 x 4  | sglang         |
-| GLM-4.5-Air | BF16      | H100 x 4 / H200 x 2  | sglang         |
-| GLM-4.5-Air | FP8       | H100 x 2 / H200 x 1  | sglang         |
+| Model         | Precision | GPU Type and Count |
+|---------------|-----------|--------------------|
+| GLM-4.5       | BF16      | H100 x 16          |
+| GLM-4.5       | FP8       | H100 x 8           |
+| GLM-4.5-Air   | BF16      | H100 x 4           |
+| GLM-4.5-Air   | FP8       | H100 x 2           |
+| GLM-4.7-Flash | BF16      | H100 x 1           |
 
 Under the configurations in the table below, the models can utilize their full 128K context length:
 
-| Model       | Precision | GPU Type and Count    | Test Framework |
-|-------------|-----------|-----------------------|----------------|
-| GLM-4.5     | BF16      | H100 x 32 / H200 x 16 | sglang         |
-| GLM-4.5     | FP8       | H100 x 16 / H200 x 8  | sglang         |
-| GLM-4.5-Air | BF16      | H100 x 8 / H200 x 4   | sglang         |
-| GLM-4.5-Air | FP8       | H100 x 4 / H200 x 2   | sglang         |
+| Model         | Precision | GPU Type and Count |
+|---------------|-----------|--------------------|
+| GLM-4.5       | BF16      | H100 x 32          |
+| GLM-4.5       | FP8       | H100 x 16          |
+| GLM-4.5-Air   | BF16      | H100 x 8           |
+| GLM-4.5-Air   | FP8       | H100 x 4           |
+| GLM-4.7-Flash | BF16       | H100 x 2           |
 
 ### Other Devices
 
@@ -132,8 +136,7 @@ Under the configurations in the table below, the models can utilize their full 1
 
 ### Fine-tuning
 
-The code can run under the configurations in the table below
-using [Llama Factory](https://github.com/hiyouga/LLaMA-Factory):
+The code can run under the configurations in the table below using [Llama Factory](https://github.com/hiyouga/LLaMA-Factory):
 
 | Model       | GPU Type and Count | Strategy | Batch Size (per GPU) |
 |-------------|--------------------|----------|----------------------|
@@ -231,12 +234,12 @@ python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0
 - For GLM-4.7, `--tool-call-parser` should be set to `glm47` in both `vLLM` and `SGLang` method.
 - For agentic tasks of GLM-4.7, please turn on [Preserved Thinking mode](https://docs.z.ai/guides/capabilities/thinking-mode) by adding the following config (only sglang support):
   
-  ```
+```
     "chat_template_kwargs": {
         "enable_thinking": true,
         "clear_thinking": false
     }
-    ```
+  ```
   
 - When using `vLLM` and `SGLang`, thinking mode is enabled by default when sending requests. If you want to disable the
 thinking switch, you need to add the `extra_body={"chat_template_kwargs": {"enable_thinking": False}}` parameter.

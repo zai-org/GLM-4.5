@@ -1,4 +1,4 @@
- # 使用 xLLM 在 Ascend A3设备 推理 GLM-4.5 / 4.6 / 4.7 基座模型
+# 使用 xLLM 在 Ascend A3设备 推理 GLM-4.5 / 4.6 / 4.7 基座模型
 
 + 源码地址：https://github.com/jd-opensource/xllm
 
@@ -215,7 +215,8 @@ export PROFILING_MODE=dynamic
 
 ## 启动命令 - 双机16卡拉起样例
 
-#### Node0 (master)
+### Node0 (master)
+
 ```bash
 
 MASTER_NODE_ADDR="11.87.49.110:10015"
@@ -260,6 +261,7 @@ done
 ```
 
 #### Node1 (worker)
+
 ```bash
 
 MASTER_NODE_ADDR="11.87.49.110:10015"
@@ -365,13 +367,17 @@ python export_deepseek_mtp.py --input_dir ${GLM-4.5-path} --output_dir ${GLM-4.5
 ## EX2.device NUMA亲和性查看
 
 命令：
+
 ```bash
 npu-smi info -t topo
 ```
+
 前述命令中
+
 ```bash
 numactl -C $((DEVICE*12))-$((DEVICE*12+11))
 ```
+
 表示该进程绑在对应亲和的核上，可根据机器具体情况修改绑定的核id
 
 ## EX3.Glm-4.5 权重量化
