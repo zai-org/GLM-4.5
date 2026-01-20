@@ -1,5 +1,5 @@
 name: "\U0001F41B Bug Report"
-description: Submit a bug report to help us improve GLM-4.5 / 提交一个 Bug 问题报告来帮助我们改进 GLM-4.5
+description: Submit a bug report to help us improve GLM-4.7 / 提交一个 Bug 问题报告来帮助我们改进 GLM-4.7
 body:
   - type: textarea
     id: system-info

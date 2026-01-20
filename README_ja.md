@@ -41,7 +41,7 @@ GLM-4.7 は**インターリーブ思考**（GLM-4.5 から導入された機能
 
 詳細：https://docs.z.ai/guides/capabilities/thinking-mode
 
-また、軽量モデルの GLM-4.7-Flash も提供しており、軽量デプロイにおいて性能と効率を両立する新たな選択肢となります。
+また、軽量な 30B-A3B モデル「GLM-4.7-Flash」も提供しており、性能と効率のバランスを両立した軽量デプロイの新しい選択肢となります。
 
 ### GLM-4.6
 
@@ -145,33 +145,32 @@ GLM-4.5とGLM-4.5-Airはどちらもハイブリッド推論モデルで、2つ�
 
 ## クイックスタート
 
-vLLMとSGLangは、メインブランチでのみGLM-4.7をサポートしています。推論には公式Dockerイメージをご利用ください。
+vLLM と SGLang は、メインブランチでのみ GLM-4.7-Flash をサポートしています。推論には公式の Docker イメージを使用できます。
 
-### vLLM
+- vLLM
 
-Dockerを使用する場合：
+    ```shell
+        docker pull vllm/vllm-openai:nightly 
+    ```
+    または pip を使用してインストール（インデックス URL として pypi.org を使用する必要があります）：
+    ```shell
+        pip install -U vllm --pre --index-url https://pypi.org/simple --extra-index-url https://wheels.vllm.ai/nightly
+    ```
 
-```shell
-    docker pull vllm/vllm-openai:nightly 
-```
+- SGLang
+    
+    ```shell
+        docker pull lmsysorg/sglang:dev
+    ```
+    Docker 内で実行：
+    
+    ```shell
+        pip install git+https://github.com/huggingface/transformers.git@76732b4e7120808ff989edbd16401f61fa6a0afa
+    ```
 
-またはpipを使用する場合（index urlにはpypi.orgを指定する必要があります）：
+またはソースから pip install sglang を使用してインストールします。
 
-```shell
-   pip install -U vllm --pre --index-url https://pypi.org/simple --extra-index-url https://wheels.vllm.ai/nightly
-```
-
-### SGLang
-
-Dockerを使用する場合：
-
-```shell
-    docker pull lmsysorg/sglang:dev
-```
-
-またはソースからsglangをpipでインストールしてください。
-
-GLM-4.6およびGLM-4.5については、`requirements.txt`の設定に従ってください。
+GLM-4.7、GLM-4.6、GLM-4.5 については、`requirements.txt` の設定に従ってください。
 
 ### transformers
 
