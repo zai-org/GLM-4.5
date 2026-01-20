@@ -149,47 +149,28 @@ vLLM と SGLang は、メインブランチでのみ GLM-4.7-Flash をサポー�
 
 - vLLM
 
-```shell
-    docker pull vllm/vllm-openai:nightly 
-```
-  
-```
-または pip を使用してインストール（インデックス URL として pypi.org を使用する必要があります）：
-```
-
-```shell
-    pip install -U vllm --pre --index-url https://pypi.org/simple --extra-index-url https://wheels.vllm.ai/nightly
-```
+    ```shell
+        docker pull vllm/vllm-openai:nightly 
+    ```
+    または pip を使用してインストール（インデックス URL として pypi.org を使用する必要があります）：
+    ```shell
+        pip install -U vllm --pre --index-url https://pypi.org/simple --extra-index-url https://wheels.vllm.ai/nightly
+    ```
 
 - SGLang
-
-```shell
-    docker pull lmsysorg/sglang:dev
-```
-  
-```
-Docker 内で実行：
-```
-
-```shell
-    pip install git+https://github.com/huggingface/transformers.git@76732b4e7120808ff989edbd16401f61fa6a0afa
-```
+    
+    ```shell
+        docker pull lmsysorg/sglang:dev
+    ```
+    Docker 内で実行：
+    
+    ```shell
+        pip install git+https://github.com/huggingface/transformers.git@76732b4e7120808ff989edbd16401f61fa6a0afa
+    ```
 
 またはソースから pip install sglang を使用してインストールします。
 
 GLM-4.7、GLM-4.6、GLM-4.5 については、`requirements.txt` の設定に従ってください。
-
-### SGLang
-
-Dockerを使用する場合：
-
-```shell
-    docker pull lmsysorg/sglang:dev
-```
-
-またはソースからsglangをpipでインストールしてください。
-
-GLM-4.6およびGLM-4.5については、`requirements.txt`の設定に従ってください。
 
 ### transformers
 
