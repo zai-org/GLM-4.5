@@ -121,13 +121,13 @@ The models can run under the configurations in the table below:
 
 Under the configurations in the table below, the models can utilize their full 128K context length:
 
-| Model         | Precision | GPU Type and Count |
-|---------------|-----------|--------------------|
-| GLM-4.5       | BF16      | H100 x 32          |
-| GLM-4.5       | FP8       | H100 x 16          |
-| GLM-4.5-Air   | BF16      | H100 x 8           |
-| GLM-4.5-Air   | FP8       | H100 x 4           |
-| GLM-4.7-Flash | BF16       | H100 x 2           |
+| Model         | Precision   | GPU Type and Count |
+|---------------|-------------|--------------------|
+| GLM-4.5       | BF16        | H100 x 32          |
+| GLM-4.5       | FP8         | H100 x 16          |
+| GLM-4.5-Air   | BF16        | H100 x 8           |
+| GLM-4.5-Air   | FP8         | H100 x 4           |
+| GLM-4.7-Flash | BF16        | H100 x 2           |
 
 ### Other Devices
 
@@ -156,33 +156,35 @@ The code can run under the configurations in the table below using [Swift](https
 
 ## Quick Start
 
-vLLM and SGLang only support GLM-4.7 on their main branches. you can use their official docker images for inference.
+vLLM and SGLang only support GLM-4.7-Flash on their main branches. you can use their official docker images for inference.
 
-### vLLM
+- vLLM
 
-Using Docker as:
+    ```shell
+    docker pull vllm/vllm-openai:nightly 
+    ```
+  
+    or using pip (must use pypi.org as the index url):
+  
+    ```shell
+    pip install -U vllm --pre --index-url https://pypi.org/simple --extra-index-url https://wheels.vllm.ai/nightly
+    ```
 
-```shell
-docker pull vllm/vllm-openai:nightly 
-```
+- SGLang
 
-or using pip (must use pypi.org as the index url):
-
-```shell
-pip install -U vllm --pre --index-url https://pypi.org/simple --extra-index-url https://wheels.vllm.ai/nightly
-```
-
-### SGLang
-
-Using Docker as:
-
-```shell
-docker pull lmsysorg/sglang:dev
-```
+    ```shell
+    docker pull lmsysorg/sglang:dev
+    ```
+  
+  in docker, run:
+  
+  ```shell
+    pip install git+https://github.com/huggingface/transformers.git@76732b4e7120808ff989edbd16401f61fa6a0afa
+    ```
 
 or using pip install sglang from source.
 
-For GLM-4.6 and GLM-4.5, you can follow the configuration in `requirements.txt`.
+For GLM-4.7, GLM-4.6 and GLM-4.5, you can follow the configuration in `requirements.txt`.
 
 ### transformers
 
@@ -234,7 +236,7 @@ python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0
 - For GLM-4.7, `--tool-call-parser` should be set to `glm47` in both `vLLM` and `SGLang` method.
 - For agentic tasks of GLM-4.7, please turn on [Preserved Thinking mode](https://docs.z.ai/guides/capabilities/thinking-mode) by adding the following config (only sglang support):
   
-```
+    ```
     "chat_template_kwargs": {
         "enable_thinking": true,
         "clear_thinking": false

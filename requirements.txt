@@ -1,10 +1,12 @@
-transformers>=4.57.1, <5
+# For GLM-4.7-Flash
+git+https://github.com/huggingface/transformers.git
 pre-commit>=4.2.0
 accelerate>=1.10.1
 
 # not recommended to install sglang and vllm in the same environment
 
-# For GLM-4.6 and GLM-4.5
+# For GLM-4.7, GLM-4.6 and GLM-4.5
 
-# sglang>=0.5.6rc2
+# transformers>=4.57.1, <5
+# sglang>=0.5.7
 # vllm>=0.13.0
