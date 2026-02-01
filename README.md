@@ -156,35 +156,7 @@ The code can run under the configurations in the table below using [Swift](https
 
 ## Quick Start
 
-vLLM and SGLang only support GLM-4.7-Flash on their main branches. you can use their official docker images for inference.
-
-- vLLM
-
-    ```shell
-    docker pull vllm/vllm-openai:nightly 
-    ```
-  
-    or using pip (must use pypi.org as the index url):
-  
-    ```shell
-    pip install -U vllm --pre --index-url https://pypi.org/simple --extra-index-url https://wheels.vllm.ai/nightly
-    ```
-
-- SGLang
-
-    ```shell
-    docker pull lmsysorg/sglang:dev
-    ```
-  
-  in docker, run:
-  
-  ```shell
-    pip install git+https://github.com/huggingface/transformers.git@76732b4e7120808ff989edbd16401f61fa6a0afa
-    ```
-
-or using pip install sglang from source.
-
-For GLM-4.7, GLM-4.6 and GLM-4.5, you can follow the configuration in `requirements.txt`.
+Install dependencies (sglang, vllm, etc.) according to the configuration requirements in `requirements.txt`.
 
 ### transformers
 
