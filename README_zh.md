@@ -148,31 +148,7 @@ GLM-4.5 和 GLM-4.5-Air 都是混合推理模型，提供两种模式：用于�
 
 ## 快速开始
 
-vLLM 和 SGLang 仅在其主分支上支持 GLM-4.7-Flash。您可以使用它们的官方 Docker 镜像进行推理。
-
-- vLLM
-
-    ```shell
-        docker pull vllm/vllm-openai:nightly 
-    ```
-    或使用 pip 安装（必须使用 pypi.org 作为索引 URL）：
-    ```shell
-        pip install -U vllm --pre --index-url https://pypi.org/simple --extra-index-url https://wheels.vllm.ai/nightly
-    ```
-
-- SGLang
-
-    ```shell
-        docker pull lmsysorg/sglang:dev
-    ```
-    在 Docker 容器中运行：
-    ```shell
-        pip install git+https://github.com/huggingface/transformers.git@76732b4e7120808ff989edbd16401f61fa6a0afa
-    ```
-
-    或从源代码使用 pip 安装 sglang。
-
-对于 GLM-4.7、GLM-4.6 和 GLM-4.5，您可以按照 `requirements.txt` 中的配置进行操作。
+按照 `requirements.txt` 中的配置要求安装依赖(sglang, vllm等)。
 
 ### transformers
 
