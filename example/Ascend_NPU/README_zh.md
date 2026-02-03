@@ -81,8 +81,7 @@ python setup.py build
 #若不执行且npu未初始化可能导致xllm进程拉起失败
 
 ```bash
-python -c "import torch_npu
-for i in range(16):torch_npu.npu.set_device(i)"
+python -c "import torch_npu; for i in range(16): torch_npu.npu.set_device(i)"
 ```
 
 ### 环境变量
@@ -133,7 +132,7 @@ export HCCL_OP_EXPANSION_MODE="AIV"
 export HCCL_IF_BASE_PORT=2864
 ```
 
-## 启动命令 - GLM-4.5 / 4/6 / 4.7 （W8A8权重可8卡拉起）
+## 启动命令 - GLM-4.5 / 4.6 / 4.7 （W8A8权重可8卡拉起）
 
 ```bash
 BATCH_SIZE=256
@@ -159,7 +158,8 @@ do
   DEVICE=$((START_DEVICE + i))
   LOG_FILE="$LOG_DIR/node_$i.log"
   nohup numactl -C $((i*12))-$((i*12+11)) $XLLM_PATH \
-    --model $MODEL_PATH  -model_id glmmoe \
+    --model $MODEL_PATH \
+    --model_id glmmoe \
     --host $LOCAL_HOST \
     --port $PORT \
     --devices="npu:$DEVICE" \
@@ -184,7 +184,7 @@ done
 #                           亲和性绑核(亲和性查询命令： npu-smi info -t topo)
 #--max_memory_utilization   单卡最大显存占用比例
 #--max_tokens_per_batch     单batch最大token数  （主要限制prefill）
-#--max_seqs_per_batch       单batch最大请求数   （主要限制decoe）
+#--max_seqs_per_batch       单batch最大请求数   （主要限制decode）
 #--communication_backend    通信backend 建议hccl
 #--enable_schedule_overlap  开启异步调度
 #--enable_prefix_cache      开启prefix_cache
@@ -239,7 +239,8 @@ do
   LOG_FILE="$LOG_DIR/node_$i.log"
   #nohup $XLLM_PATH \
   nohup numactl -C $((DEVICE*12))-$((DEVICE*12+11)) $XLLM_PATH \
-    --model $MODEL_PATH  -model_id glmmoe \
+    --model $MODEL_PATH \
+    --model_id glmmoe \
     --host $LOCAL_HOST \
     --port $PORT \
     --devices="npu:$DEVICE" \
@@ -284,7 +285,8 @@ do
   LOG_FILE="$LOG_DIR/node_$i.log"
   #nohup $XLLM_PATH \
   nohup numactl -C $((DEVICE*12))-$((DEVICE*12+11)) $XLLM_PATH \
-    --model $MODEL_PATH  -model_id glmmoe \
+    --model $MODEL_PATH \
+    --model_id glmmoe \
     --host $LOCAL_HOST \
     --port $PORT \
     --devices="npu:$DEVICE" \
