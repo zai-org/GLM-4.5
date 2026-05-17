@@ -23,10 +23,10 @@
 
 - **Core Coding**: GLM-4.7 brings clear gains, compared to its predecessor GLM-4.6, in multilingual agentic coding and terminal-based tasks, including (73.8%, +5.8%) on SWE-bench, (66.7%, +12.9%) on SWE-bench Multilingual, and (41%, +16.5%) on Terminal Bench 2.0. GLM-4.7 also supports thinking before acting, with significant improvements on complex tasks in mainstream agent frameworks such as Claude Code, Kilo Code, Cline, and Roo Code.
 - **Vibe Coding**: GLM-4.7 takes a big step forward in improving UI quality. It produces cleaner, more modern webpages and generates better-looking slides with more accurate layout and sizing.
-- **Tool Using**: GLM-4.7 achieves significantly improvements in Tool using. Significant better performances can be seen on benchmarks such as τ^2-Bench and on web browsing via BrowseComp.
+- **Tool Using**: GLM-4.7 achieves significant improvements in Tool using. Significantly better performance can be seen on benchmarks such as τ^2-Bench and on web browsing via BrowseComp.
 - **Complex Reasoning**: GLM-4.7 delivers a substantial boost in mathematical and reasoning capabilities, achieving (42.8%, +12.4%) on the HLE (Humanity’s Last Exam) benchmark compared to GLM-4.6.
 
-More general, one would also witness significant improvements in many other scenarios such as chat, creative writing, and role-play scenario.
+More generally, one would also witness significant improvements in many other scenarios such as chat, creative writing, and role-play scenarios.
 
 ![bench](resources/bench_glm47.png)
 
@@ -48,7 +48,7 @@ We also provide the lightweight 30B-A3B model GLM-4.7-Flash, offering a new opti
 Compared with GLM-4.5, **GLM-4.6**  brings several key improvements:
 
 - **Longer context window:** The context window has been expanded from 128K to 200K tokens, enabling the model to handle more complex agentic tasks.
-- **Superior coding performance:** The model achieves higher scores on code benchmarks and demonstrates better real-world performance in applications such as Claude Code、Cline、Roo Code and Kilo Code, including improvements in generating visually polished front-end pages.
+- **Superior coding performance:** The model achieves higher scores on code benchmarks and demonstrates better real-world performance in applications such as Claude Code, Cline, Roo Code and Kilo Code, including improvements in generating visually polished front-end pages.
 - **Advanced reasoning:** GLM-4.6 shows a clear improvement in reasoning performance and supports tool use during inference, leading to stronger overall capability.
 - **More capable agents:** GLM-4.6 exhibits stronger performance in tool using and search-based agents, and integrates more effectively within agent frameworks.
 - **Refined writing:** Better aligns with human preferences in style and readability, and performs more naturally in role-playing scenarios.
@@ -205,7 +205,7 @@ python -m sglang_router.launch_router --pd-disaggregation --prefill http://127.0
 
 ### Parameter Instructions
 
-- For GLM-4.7, `--tool-call-parser` should be set to `glm47` in both `vLLM` and `SGLang` method.
+- For GLM-4.7, `--tool-call-parser` should be set to `glm47` in both `vLLM` and `SGLang` methods.
 - For agentic tasks of GLM-4.7, please turn on [Preserved Thinking mode](https://docs.z.ai/guides/capabilities/thinking-mode) by adding the following config (only sglang support):
   
     ```
@@ -223,7 +223,7 @@ thinking switch, you need to add the `extra_body={"chat_template_kwargs": {"enab
 ### Evaluation
 
 - For tool-integrated reasoning, please refer to [this doc](resources/glm_4.6_tir_guide.md).
-- For search benchmark, we design a specific format for searching toolcall in thinking mode to support search agent, please refer to [this](resources/trajectory_search.json). for the detailed template.
+- For search benchmark, we design a specific format for searching toolcall in thinking mode to support search agent, please refer to [this](resources/trajectory_search.json) for the detailed template.
 
 ## Citation
 
