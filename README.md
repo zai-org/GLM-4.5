@@ -75,6 +75,15 @@ GLM-4.5-Air delivers competitive results at **59.8** while maintaining superior 
 
 For more eval results, show cases, and technical details, please visit our [technical report](https://arxiv.org/abs/2508.06471).
 
+Live Papers with Code results:
+
+[![Papers with Code: SOTA on GPQA](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge.svg?eval=20212&live=1)](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge-link?eval=20212)
+[![Papers with Code: SOTA on MATH 500](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge.svg?eval=20207&live=1)](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge-link?eval=20207)
+[![Papers with Code: SOTA on SafetyBench](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge.svg?eval=636&live=1)](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge-link?eval=636)
+[![Papers with Code: SOTA on SysBench (ISR)](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge.svg?eval=634&live=1)](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge-link?eval=634)
+[![Papers with Code: SOTA on TauBench (airline)](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge.svg?eval=637&live=1)](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge-link?eval=637)
+[![Papers with Code: #2 on MMLU](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge.svg?eval=20209&live=1)](https://paperswithcode.co/api/v1/papers/2508.06471/leaderboard-badge-link?eval=20209)
+
 ## Model Downloads
 
 | Model            | Download Links                                                                                                                                | Model Size | Precision |
