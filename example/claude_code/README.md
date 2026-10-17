@@ -136,3 +136,42 @@ Service not running, starting service...
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
   ? for shortcuts
 ```
+
+## Optional web research with Parallel Search MCP
+
+[Parallel Search MCP](https://docs.parallel.ai/integrations/mcp/search-mcp) adds
+web search and page fetching to Claude Code. The anonymous endpoint needs no
+account or API key and uses Fast mode for search, with free-tier rate limits.
+
+After the GLM setup above is working, run these commands on your local device
+from the same project directory where you run `ccr code`:
+
+```shell
+claude mcp add --transport http --scope local parallel-search https://search.parallel.ai/mcp \
+  --header "User-Agent: GLM-4.5-Claude-Code"
+claude mcp get parallel-search
+```
+
+This registers the server for your user in the current project. It keeps the
+existing model routing and other MCP servers unchanged; no edits to
+`~/.claude-code-router/config.json` are needed. Search queries and fetched URLs
+are sent to Parallel.
+
+Restart `ccr code`, then run `/mcp` inside Claude Code to confirm that
+`parallel-search` is connected and exposes `web_search` and `web_fetch`. Approve
+the tools when prompted. For example, ask:
+
+```text
+Use parallel-search to find the current SGLang documentation for serving GLM-4.5.
+Fetch the most relevant official page, summarize its tool-calling setup, and cite
+the source URLs. Do not change any files.
+```
+
+To remove this optional server, run from the same project directory:
+
+```shell
+claude mcp remove --scope local parallel-search
+```
+
+See the [Claude Code MCP guide](https://code.claude.com/docs/en/mcp) for scope and
+connection troubleshooting.

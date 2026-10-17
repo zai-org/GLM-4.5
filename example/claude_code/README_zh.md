@@ -136,3 +136,38 @@ Service not running, starting service...
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
   ? for shortcuts
 ```
+
+## 可选：使用 Parallel Search MCP 进行网络研究
+
+[Parallel Search MCP](https://docs.parallel.ai/integrations/mcp/search-mcp) 为
+Claude Code 提供网络搜索和网页抓取功能。匿名端点无需账号或 API 密钥，搜索使用
+Fast 模式，并有免费额度的速率限制。
+
+完成上述 GLM 配置并确认可以正常使用后，在本地设备上进入运行 `ccr code`
+时使用的同一个项目目录，执行：
+
+```shell
+claude mcp add --transport http --scope local parallel-search https://search.parallel.ai/mcp \
+  --header "User-Agent: GLM-4.5-Claude-Code"
+claude mcp get parallel-search
+```
+
+该命令仅为当前用户在当前项目中注册服务器，保留已有模型路由和其他 MCP 服务器，
+无需修改 `~/.claude-code-router/config.json`。搜索查询和抓取的 URL 会发送给 Parallel。
+
+重新启动 `ccr code`，然后在 Claude Code 中运行 `/mcp`，确认 `parallel-search`
+已连接并提供 `web_search` 和 `web_fetch`。出现提示时批准工具调用。例如，可以输入：
+
+```text
+使用 parallel-search 查找当前 SGLang 官方文档中关于部署 GLM-4.5 的说明。
+抓取最相关的官方页面，总结工具调用的配置方法，并引用来源 URL。不要修改任何文件。
+```
+
+如需移除此可选服务器，请在同一个项目目录中执行：
+
+```shell
+claude mcp remove --scope local parallel-search
+```
+
+有关作用域和连接问题的排查方法，请参阅
+[Claude Code MCP 指南](https://code.claude.com/docs/en/mcp)。
