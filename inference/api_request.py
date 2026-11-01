@@ -23,40 +23,6 @@ tools = [
             },
         },
     },
-    {
-        "type": "function",
-        "function": {
-            "name": "return_delivered_order_items",
-            "description": "Return items from a delivered order",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "order_id": {
-                        "type": "string",
-                        "description": "The order ID, e.g. #W4794911",
-                    },
-                    "item_ids": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "List of item IDs to return",
-                    },
-                    "payment_method_id": {
-                        "type": "string",
-                        "description": "Payment method ID for processing the return, e.g. paypal_7503218",
-                    },
-                },
-                "required": ["order_id", "item_ids", "payment_method_id"],
-                "additionalProperties": False,
-            },
-        },
-    },
-]
-tools_messages = [
-    {
-        "role": "tool",
-        "tool_call_id": "tool-call-bf208d1d-9b5f-407f-8c6e-c35e54aa2fef",
-        "content": '{"city": "北京", "date": "2024-06-27", "weather": "晴", "temperature": "26C"}',
-    },
 ]
 messages = [
     {"role": "system", "content": "请你调用工具，用中文回答问题。"},
@@ -70,23 +36,42 @@ client = OpenAI(
 completion = client.chat.completions.create(
     model="zai-org/GLM-4.7",
     messages=messages,
+    tools=tools,
     max_tokens=4096,
     temperature=0.0,
     # extra_body={"chat_template_kwargs": {"enable_thinking": False}} # Uncomment this line to disable thinking
 )
-tool_call = completion.choices[0].message.tool_calls[0]
-args = json.loads(tool_call.function.arguments)
-print("===== TOOL CALL =====")
-print(tool_call)
-messages.append(completion.choices[0].message)
-messages.append(tools_messages[0])
+message = completion.choices[0].message
+if message.tool_calls:
+    messages.append(message)
+    for tool_call in message.tool_calls:
+        args = json.loads(tool_call.function.arguments)
+        print("===== TOOL CALL =====")
+        print(tool_call)
+        # Simulate a weather service; each result must match its returned call ID.
+        messages.append(
+            {
+                "role": "tool",
+                "tool_call_id": tool_call.id,
+                "content": json.dumps(
+                    {
+                        "location": args["location"],
+                        "weather": "晴",
+                        "temperature": "26C",
+                    },
+                    ensure_ascii=False,
+                ),
+            }
+        )
 
-## This part is to simulate the tool response
-completion_2 = client.chat.completions.create(
-    model="zai-org/GLM-4.7",
-    messages=messages,
-    tools=tools,
-    extra_body={"chat_template_kwargs": {"enable_thinking": False}},
-)
-print("===== RESPONSE =====")
-print(completion_2.choices[0].message.content)
+    completion_2 = client.chat.completions.create(
+        model="zai-org/GLM-4.7",
+        messages=messages,
+        tools=tools,
+        extra_body={"chat_template_kwargs": {"enable_thinking": False}},
+    )
+    print("===== RESPONSE =====")
+    print(completion_2.choices[0].message.content)
+else:
+    print("===== RESPONSE =====")
+    print(message.content)
